@@ -1,0 +1,18 @@
+
+.product-filter {
+    display: flex;
+}
+
+.product-filter h1 {
+    flex-grow: 1;
+}
+
+.container-sort {
+    display: flex;
+ 
+}
+
+.collection-sort {
+    display: flex;
+    
+}
