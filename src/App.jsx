@@ -3,8 +3,8 @@ import NavBar from "./pages/NavBar";
 import Home from "./pages/Home";
 import Clients from "./pages/Clients";
 import Profile from "./pages/Profile";
+import Info from "./pages/Info";
 import NoPage from "./pages/NoPage";
-
 
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="clients" element={<Clients />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="/info" element={<Info />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

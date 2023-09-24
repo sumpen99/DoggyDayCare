@@ -1,4 +1,4 @@
-.container-body{
+#container-body576675{
     height: 100vh;
     width: 100vw;
     align-items:baseline;
@@ -52,7 +52,7 @@ select{
     flex-direction: column;
     flex: 1 16%;
     border: 1px solid #666666;
-    max-width: 100px;
+    max-width: 15vw;
     
 }
 
