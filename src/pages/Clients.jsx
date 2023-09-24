@@ -1,7 +1,6 @@
 import '../styles/clients.css';
+import React, { useState, useEffect } from 'react';
 
-import React from 'react';
-import Catalog from "react-catalog-view";
 
 const SortContainer = () =>{
   return(
@@ -14,45 +13,60 @@ const SortContainer = () =>{
 
 const FilterField = () =>{
   return (
-    <div className="collection-sort"> 
-      <label>Filter by:</label> 
-      <select> <option value="/">All Jackets</option> </select> 
+    <div className="collection-sort">
+      <div><label>Filter by:</label>  </div>  
+      <select> <option value="/">All Dogs</option> </select> 
     </div>
+    
   )
 }
 
 const SortField = () =>{
   return (
     <div className="collection-sort"> 
-      <label>Sort by:</label> 
+      <div><label>Sort by:</label>  </div>  
       <select> <option value="/">Featured</option> </select> 
     </div>
   )
 }
 
+const ClientCard = (client) =>{
+  return(
+    <div key={Math.random()} className="client-card">
+      <div className="client-image"> <img src="./src/assets/dogs.png"></img> </div>
+      <div className="client-info">
+        <h5>{client.name}</h5>
+        <h6>{client.breed}</h6>
+      </div>
+    </div>
+  )
+}
+
 const Clients = () => {
-
-  const loadClients = async event =>{
-
-    const baseUrl = 'https://api.jsonbin.io/v3/b/650a7ebece39bb6dce7f5683';
-   
-    const url = `${baseUrl}?format=json&nojsoncallback=1`;
-
-    const response = await fetch(baseUrl);
-    const clientData = await response.json();
-    
-    clientData.record.forEach( (dog) =>
-      console.log(dog)
-    )
-  }
+  const baseUrl = 'https://api.jsonbin.io/v3/b/650a7ebece39bb6dce7f5683';
+  const url = `${baseUrl}?format=json&nojsoncallback=1`;
+  const [clients,setClients] = useState([]);
+  useEffect(() => {
+    const getClients = async event =>{
+        const response = await fetch(baseUrl);
+        const clientData = await response.json();
+        setClients(clientData.record)
+    }
+    getClients()
+  },[])
 
   
 
   return (
-    <nav className="product-filter">
-      <h1>Dogs</h1>
-      <SortContainer/>
-      </nav>
+    <div className="container-body">
+    <h1 >All Categories</h1>
+    <SortContainer/>
+    <nav className="client-filter">
+      <section className="section-clients">
+        {clients.map(client => ClientCard(client) )}
+      </section>
+    </nav>
+    </div>
   );
   };
   
