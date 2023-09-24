@@ -55,15 +55,3 @@ function viewportWidth(){
 function randomNumber(from, to){
     return (Math.random() * (to - from)) + from;
 }
-
-export default function toggleMenu() {
-    console.log("toggle")
-    var x = document.querySelector("[data-menu-bar]");
-    if(x != null){
-        if (x.className === "menu-bar") {
-            x.className += " responsive";
-        } else {
-            x.className = "menu-bar";
-        }
-    }
-}
