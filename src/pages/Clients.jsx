@@ -1,7 +1,10 @@
 import '../styles/clients.css';
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import Select from 'react-select'
 import AsyncImage from "../helper/asyncimage"
+import {parseBreedFromListOfClients} from "../helper/core"
+
 const SortContainer = () =>{
   return(
     <div className="container-sort">
@@ -10,12 +13,16 @@ const SortContainer = () =>{
     </div>
   )
 }
-
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
 const FilterField = () =>{
   return (
     <div className="collection-sort">
-      <div><label>Filter by breed:</label>  </div>  
-      <select> <option value="/">All</option> </select> 
+      <div><label>Breed:</label>  </div>  
+      <Select options={options} /> 
     </div>
     
   )
@@ -44,17 +51,21 @@ const ClientCard = (client) =>{
  );
 }
 
+
+
 const Clients = () => {
   const baseUrl = 'https://api.jsonbin.io/v3/b/650a7ebece39bb6dce7f5683';
   //const url = `${baseUrl}?format=json&nojsoncallback=1`;
+  const [breeds,setBreeds] = useState([]);
   const [clients,setClients] = useState([]);
 
   useEffect(() => {
     const getClients = async event =>{
-      
         const response = await fetch(baseUrl);
         const clientData = await response.json();
-        setClients(clientData.record)
+        const breedData = await parseBreedFromListOfClients(clientData.record ?? []);
+        setClients(clientData.record ?? []);
+        setBreeds(breedData ?? [])
     }
     getClients()
   },[])

@@ -55,3 +55,22 @@ function viewportWidth(){
 function randomNumber(from, to){
     return (Math.random() * (to - from)) + from;
 }
+
+function parseBreeds(clients){
+    const breeds = {};
+    clients.map(client => {
+        const breed = client.breed; 
+        if(breed in breeds){
+            breeds[breed]++;
+        } 
+        else{
+            breeds[breed] = 1;
+        }
+    });
+    return breeds;
+
+}
+
+export async function parseBreedFromListOfClients(clients){
+    return new Promise( resolve => { const breeds = parseBreeds(clients); resolve(breeds); })
+}
