@@ -1,46 +1,38 @@
 import '../styles/clients.css';
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback} from 'react';
 import { Link } from "react-router-dom";
 import AsyncImage from "../helper/asyncimage"
-import {parseBreedFromListOfClients} from "../helper/core"
 import fetcher from "../helper/fetcher"
+import { FILTER_OPTION } from "../helper/core"
 
-const SortContainer = (selectedFilter) =>{
-  return(
-    <div className="container-sort">
-        <FilterField/>
-        <SortField/>
-    </div>
-  )
-}
-
-const FilterField = ({selectedFilter,onSelectedFilterChange}) =>{
+const FilterField = ({filterOption,onFilterOptionChange}) =>{
   
   const handleSelectedChange = useCallback(event => {
-    onSelectedFilterChange(event.target.value);
-  },[onSelectedFilterChange])
+    onFilterOptionChange(event.target.value);
+  },[onFilterOptionChange])
   
   return (
     <div className="collection-sort">
-      <div><label>Filter:</label>  </div>  
-      <select value={selectedFilter} onChange = {handleSelectedChange}> 
-        <option value="all">All</option>
-        <option value="breed">Breed</option>
-        <option value="name">Name</option>
-        <option value="active">Active</option> 
+      <div><label>Filter on:</label>  </div>  
+      <select value={filterOption} onChange = {handleSelectedChange}> 
+        {Object.values(FILTER_OPTION).map( op => <option key={op} value={op}>{op}</option> )};
       </select> 
     </div>
     
   )
 }
 
-const SortField = () =>{
-  return (
+const SearchField = ({isDisabled,onValueToMatchChange}) =>{
+  const handleInputChange = useCallback(event => {
+    onValueToMatchChange(event.target.value);
+  },[onValueToMatchChange])
+
+  return(
     <div className="collection-sort"> 
-      <div><label>Sort by:</label>  </div>  
-      <select> <option value="/">Featured</option> </select> 
+      <div><label>Search for:</label>  </div>
+      <input className="search" placeholder={isDisabled ? "" : "search"} type="text" onChange={handleInputChange} disabled={isDisabled}></input>
     </div>
-  )
+  );
 }
 
 const ClientCard = (client) =>{
@@ -57,100 +49,26 @@ const ClientCard = (client) =>{
  );
 }
 
-
-
-class ClientsData extends React.Component{
-
-    constructor(props){
-        super(props);
-        this.state = {
-            loaded: false,
-            clients: null,
-            selectedFilter:props.selectedFilter
-        };
-    }
-
-    static getDerivedStateFromProps(props, state) {
-      if(props.selectedFilter !== state.selectedFilter){
-        return {
-          selectedFilter:props.selectedFilter
-        };
-      }
-      // Re-run the filter whenever the list array or filter text change.
-      // Note we need to store prevPropsList and prevFilterText to detect changes.
-      /*if (
-        props.list !== state.prevPropsList ||
-        state.prevFilterText !== state.filterText
-      ) {
-        return {
-          prevPropsList: props.list,
-          prevFilterText: state.filterText,
-          filteredList: props.list.filter(item => item.text.includes(state.filterText))
-        };
-      }*/
-      return null;
-  }
-
-    componentDidMount(){
-        fetcher().then( clients => {
-            this.setState({
-                loaded:true,
-                clients:clients
-            });
-        });
-    }
-
-    render(){
-      console.log(this.state.selectedFilter);
-      if(!this.state.loaded){
-        return false;
-      }
-      return (
-        <section className="section-clients">
-          {this.state.clients.map(client => ClientCard(client) )}
-        </section>
-        );
-    };
-}
-
-const Clients = () => {
-  /*const baseUrl = 'https://api.jsonbin.io/v3/b/650a7ebece39bb6dce7f5683';
-  const [breeds,setBreeds] = useState([]);
+const ClientsData = (props) =>{
   const [clients,setClients] = useState([]);
 
   useEffect(() => {
     const getClients = async event =>{
-        const response = await fetch(baseUrl);
-        const clientData = await response.json();
-        const breedData = await parseBreedFromListOfClients(clientData.record ?? []);
-        setClients(clientData.record ?? []);
-        setBreeds(breedData ?? [])
+      fetcher(props.filterRequest.filterOption,props.filterRequest.valueToMatch).then( filteredClients => {
+        setClients(filteredClients);
+      });
     }
     getClients()
-  },[])*/
-
-  const [selectedFilter,setSelectedFilter] = useState("all")
-
-  return (
-    <div className="container-body">
-    <h1 >All Categories {selectedFilter}</h1>
-    <div className="container-sort">
-        <FilterField selectedFilter={selectedFilter} onSelectedFilterChange={setSelectedFilter}></FilterField>
-        <SortField/>
-    </div>
-    <div className="client-filter">
-    <ClientsData selectedFilter={selectedFilter}></ClientsData>
-    </div>
-    </div>
-  );
-  };
+  },[props.filterRequest])
   
-export default Clients;
+  return (
+    <section className="section-clients">
+      {clients.map(client => ClientCard(client) )}
+    </section>
+    );
 
+}
 
-/*
-const {useState, useEffect} = React;
-https://stackoverflow.com/questions/53574614/multiple-calls-to-state-updater-from-usestate-in-component-causes-multiple-re-re
 function useMergeState(initialState) {
   const [state, setState] = useState(initialState);
   const setMergedState = newState => 
@@ -159,35 +77,42 @@ function useMergeState(initialState) {
   return [state, setMergedState];
 }
 
-function App() {
-  const [userRequest, setUserRequest] = useMergeState({
-    loading: false,
-    user: null,
+const Clients = () => {
+  const [filterOption,setFilterOption] = useState(FILTER_OPTION.ALL);
+  const [valueToMatch,setValueToMatch] = useState("");
+  const [filterRequest, setFilterRequest] = useMergeState({
+    filterOption: filterOption,
+    valueToMatch: valueToMatch
   });
 
-  useEffect(() => {
-    setUserRequest({ loading: true });
-    fetch('https://randomuser.me/api/')
-      .then(results => results.json())
-      .then(data => {
-        setUserRequest({
-          loading: false,
-          user: data.results[0],
-        });
-      });
-  }, []);
 
-  const { loading, user } = userRequest;
+  function isDisabled(){
+    return  filterOption === FILTER_OPTION.ALL     ||
+            filterOption === FILTER_OPTION.ABSENT  ||
+            filterOption === FILTER_OPTION.PRESENT ||
+            filterOption === FILTER_OPTION.MALE    ||
+            filterOption === FILTER_OPTION.FEMALE;
+  }
+
+  useEffect(() => {
+    setFilterRequest({
+      filterOption: filterOption,
+      valueToMatch: valueToMatch
+    })
+  },[filterOption,valueToMatch])
 
   return (
-    <div>
-      {loading && 'Loading...'}
-      {user && user.name.first}
+    <div className="container-body">
+    <h1 >Doggy DayCare Clients</h1>
+    <div className="container-sort">
+        <FilterField filterOption={filterOption} onFilterOptionChange={setFilterOption}></FilterField>
+        <SearchField isDisabled={isDisabled()} onValueToMatchChange={setValueToMatch}></SearchField>
+    </div>
+    <div className="client-filter">
+    <ClientsData filterRequest={filterRequest}></ClientsData>
+    </div>
     </div>
   );
-}
-
-ReactDOM.render(<App />, document.querySelector('#app'));
-
-
-*/
+  };
+  
+export default Clients;

@@ -1,4 +1,4 @@
-#container-body576675{
+.container-body{
     height: 100vh;
     width: 100vw;
     align-items:baseline;
@@ -56,6 +56,7 @@ select{
     border: 1px solid #666666;
     border-radius: 10px;
     max-width: 15vw;
+    min-width: 100px;
 }
 
 .client-image img {
@@ -65,5 +66,21 @@ select{
 .client-info {
     overflow-wrap: break-word;
   
+}
+
+.search {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid grey;
+    border-radius: 5px;
+    height: 25px;
+    width: 150px;
+    padding: 2px 2px 2px 30px;
+    outline: 0;
+    background-color: #f5f5f5;
+}
+
+.search:disabled{
+    opacity: 0.8;
 }
 
