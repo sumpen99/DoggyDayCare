@@ -1,4 +1,6 @@
- // http://localhost:5173/
+// http://localhost:5173/
+export const CLIENTS_PER_PAGE = 3;
+
 export const FILTER_OPTION = Object.freeze({
     ALL:"All",
     NAME:"Name",
@@ -9,7 +11,7 @@ export const FILTER_OPTION = Object.freeze({
     FEMALE:"Female",
     AGE:"Age",
     OWNER:"Owner",
-  });
+});
 
 export function stringInterPolation(...args){
     let str = "";
