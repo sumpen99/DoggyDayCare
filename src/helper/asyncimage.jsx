@@ -28,7 +28,6 @@ export default function AsyncImage({src}){
     if (loadedSrc === src || loadedSrc === FALLBACK_URL) {
         return (
             <img {...{src:loadedSrc}}/>
-            //<img {...props}/>
         );
     }
     return null;
