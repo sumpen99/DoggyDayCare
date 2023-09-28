@@ -1,9 +1,10 @@
 import React from 'react';
+import { useState,useEffect} from 'react';
 const FALLBACK_URL = "/src/assets/notfound.png";
 export default function AsyncImage({src}){
 
-    const [loadedSrc, setLoadedSrc] = React.useState(null);
-    React.useEffect(() => {
+    const [loadedSrc, setLoadedSrc] = useState(null);
+    useEffect(() => {
         setLoadedSrc(null);
         if (src) {
             const handleLoad = () => {
