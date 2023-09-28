@@ -17,7 +17,7 @@ export const Pagination = ({currentPage,totalPages,onCurrentPageChange}) => {
       { Array(totalPages).fill(null).map((value,index) => ( 
         <a key={index} value={index} href="#" className={(currentPage == index) ? "active" : "notActive"} onMouseDown={handleSelectedChange}>{index+1}</a>)) 
       }
-      <a href="#" value={Math.min(currentPage+1,totalPages-1)} onMouseDown={handleSelectedChange}>&raquo;</a>
+      <a href="#" value={Math.min(currentPage+1,Math.max(0,totalPages-1))} onMouseDown={handleSelectedChange}>&raquo;</a>
     </div>
   )
 }
@@ -65,12 +65,12 @@ export const ClientCard = (client) =>{
   );
 }
   
-export const ListOfClients = ({filterRequest,onTotalPagesChange,onResetPage}) =>{
+export const ListOfClients = ({filterRequest,onClientCountChange,onResetPage}) =>{
   const [clients,setClients] = useState([]);
 
   useEffect(() => {
     const getClients = async event =>{
-      clientDataHandler(filterRequest.filterOption,filterRequest.valueToMatch,filterRequest.currentPage,onTotalPagesChange,onResetPage).then( filteredClients => {
+      clientDataHandler(filterRequest.filterOption,filterRequest.valueToMatch,filterRequest.currentPage,onClientCountChange,onResetPage).then( filteredClients => {
         setClients(filteredClients);
       });
     }

@@ -12,7 +12,7 @@ const NavBar = () => {
   
   return (
     <>
-      <nav className="navigation">
+    <nav className="navigation">
       <div className={isOpen ? "menu-bar responsive" : "menu-bar"} data-menu-bar id="toggle_button">
         <Link to="/" data-page="home">Home</Link>
         <Link to="/Clients" data-page="clients">Clients</Link>

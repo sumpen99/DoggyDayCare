@@ -20,21 +20,29 @@ function isDisabled(filterOption){
           filterOption === FILTER_OPTION.FEMALE;
 }
 
-function itemCount(currentPage,totalPages){
-  const startItem = currentPage * CLIENTS_PER_PAGE + 1;
-  return `Show ${startItem} - ${startItem + CLIENTS_PER_PAGE - 1} of ${totalPages * CLIENTS_PER_PAGE} items`;
+function itemCount(currentPage,totalClients){
+  let startItem = currentPage * CLIENTS_PER_PAGE + 1;
+  startItem = startItem > totalClients ? totalClients : startItem;
+  const endItem = Math.min(totalClients,startItem + CLIENTS_PER_PAGE - 1)
+  return `Show ${startItem} - ${endItem} of ${totalClients} items`;
 }
 
 const Clients = () => {
   const [filterOption,setFilterOption] = useState(FILTER_OPTION.ALL);
   const [valueToMatch,setValueToMatch] = useState("");
-  const [totalPages,setTotalPages] = useState(0);
+  const [totalClients] = useState(0);
+  const [totalPages] = useState(0);
   const [currentPage,setCurrentPage] = useState(0);
 
   const [filterRequest, setFilterRequest] = useMergeState({
     filterOption: filterOption,
     valueToMatch: valueToMatch,
     currentPage:currentPage
+  });
+
+  const [clientCount, setClientCount] = useMergeState({
+    totalClients: totalClients,
+    totalPages: totalPages
   });
 
   useEffect(() => {
@@ -56,11 +64,11 @@ const Clients = () => {
         <FilterField filterOption={filterOption} onFilterOptionChange={setFilterOption}></FilterField>
     </div>
     <div className="container-pages">
-      <h4> {itemCount(currentPage,totalPages)}</h4>
-      <Pagination currentPage={currentPage} totalPages={totalPages} onCurrentPageChange={setCurrentPage}></Pagination>
+      <h4> {itemCount(currentPage,clientCount.totalClients)}</h4>
+      <Pagination currentPage={currentPage} totalPages={clientCount.totalPages} onCurrentPageChange={setCurrentPage}></Pagination>
     </div>
     <div className="client-filter">
-      <ListOfClients filterRequest={filterRequest} onTotalPagesChange={setTotalPages} onResetPage={setCurrentPage}></ListOfClients>
+      <ListOfClients filterRequest={filterRequest} onClientCountChange={setClientCount} onResetPage={setCurrentPage}></ListOfClients>
     </div>
     </div>
   );

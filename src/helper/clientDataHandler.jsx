@@ -1,6 +1,7 @@
 import { FILTER_OPTION,stringInterPolation,CLIENTS_PER_PAGE } from "./core";
 let cache = null;
 const baseUrl = 'https://api.jsonbin.io/v3/b/650a7ebece39bb6dce7f5683';
+
 let lastRequest = { 
   filterOption: null,
   valueToMatch: null,
@@ -10,7 +11,7 @@ let lastRequest = {
 };
 
  //stringInterPolation(selectedFilter,valueToMatch);
-export default async function makeRequest(selectedFilter,valueToMatch,currentPage,onTotalPagesChange,onResetPage) {
+export default async function makeRequest(selectedFilter,valueToMatch,currentPage,onClientCountChange,onResetPage) {
   console.log("we are re-loading")
   if(!cache) {
     const response = await fetch(baseUrl);
@@ -25,7 +26,10 @@ export default async function makeRequest(selectedFilter,valueToMatch,currentPag
     updateLastRequest(selectedFilter,valueToMatch,clientsAvailable,filteredClients);
   }
   updateLastRequestWithPage(currentPage);
-  onTotalPagesChange(Math.floor(lastRequest.totalClientsAvailable/CLIENTS_PER_PAGE));
+  onClientCountChange({
+    totalClients:lastRequest.totalClientsAvailable,
+    totalPages:Math.ceil(lastRequest.totalClientsAvailable/CLIENTS_PER_PAGE)
+  });
   return slicedFilteredClients(currentPage);
 }
 
