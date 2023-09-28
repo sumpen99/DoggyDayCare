@@ -1,31 +1,23 @@
 import { Outlet, Link } from "react-router-dom";
-import React from "react";
-import { HelmetProvider } from 'react-helmet-async';
+import React, { useState } from "react";
+import '../styles/navbar.css';
 
 const NavBar = () => {
+  
+  const [isOpen,setIsOpen] = useState(false);
 
-  const toggleMenu = event => {
-    //console.log(event.data)
-    const toggleButton = document.getElementById('toggle_button');
-    if(toggleButton != null){
-        if (toggleButton.className == "menu-bar") {
-            toggleButton.className += " responsive";
-        } 
-        else {
-            toggleButton.className = "menu-bar";
-        }
-    }
+  const handleToggleMenu = () =>{
+    setIsOpen(!isOpen);
   }
-
+  
   return (
     <>
       <nav className="navigation">
-      <div className="menu-bar" data-menu-bar id="toggle_button">
-      <HelmetProvider> <link rel="stylesheet" href="../src/styles/navbar.css"/> </HelmetProvider>
-      <Link to="/" data-page="home">Home</Link>
-      <Link to="/Clients" data-page="clients">Clients</Link>
-      <Link to="/Profile" data-page="profile">Profile</Link>
-      <a href="#" className="icon"> <i className="fa fa-bars" onClick={toggleMenu}></i> </a>
+      <div className={isOpen ? "menu-bar responsive" : "menu-bar"} data-menu-bar id="toggle_button">
+        <Link to="/" data-page="home">Home</Link>
+        <Link to="/Clients" data-page="clients">Clients</Link>
+        <Link to="/Profile" data-page="profile">Profile</Link>
+        <a href="#" className="icon" onMouseDown={handleToggleMenu}> <i className="fa fa-bars"></i> </a>
       </div>
     </nav>
     <Outlet />

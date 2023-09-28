@@ -20,6 +20,10 @@ function isDisabled(filterOption){
           filterOption === FILTER_OPTION.FEMALE;
 }
 
+function itemCount(currentPage,totalPages){
+  const startItem = currentPage * CLIENTS_PER_PAGE + 1;
+  return `Show ${startItem} - ${startItem + CLIENTS_PER_PAGE - 1} of ${totalPages * CLIENTS_PER_PAGE} items`;
+}
 
 const Clients = () => {
   const [filterOption,setFilterOption] = useState(FILTER_OPTION.ALL);
@@ -45,14 +49,18 @@ const Clients = () => {
 
   return (
     <div className="container-body">
-    <h1 >Doggy DayCare Clients {currentPage} {totalPages}</h1>
+    <h1 >Doggy DayCare</h1>
     <div className="container-sort">
         <FilterField filterOption={filterOption} onFilterOptionChange={setFilterOption}></FilterField>
         <SearchField isDisabled={isDisabled(filterOption)} onValueToMatchChange={setValueToMatch}></SearchField>
+        <FilterField filterOption={filterOption} onFilterOptionChange={setFilterOption}></FilterField>
     </div>
-    <Pagination currentPage={currentPage} totalPages={totalPages} onCurrentPageChange={setCurrentPage}></Pagination>
+    <div className="container-pages">
+      <h4> {itemCount(currentPage,totalPages)}</h4>
+      <Pagination currentPage={currentPage} totalPages={totalPages} onCurrentPageChange={setCurrentPage}></Pagination>
+    </div>
     <div className="client-filter">
-    <ListOfClients filterRequest={filterRequest} onTotalPagesChange={setTotalPages} onResetPage={setCurrentPage}></ListOfClients>
+      <ListOfClients filterRequest={filterRequest} onTotalPagesChange={setTotalPages} onResetPage={setCurrentPage}></ListOfClients>
     </div>
     </div>
   );

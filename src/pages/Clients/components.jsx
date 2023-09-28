@@ -15,7 +15,7 @@ export const Pagination = ({currentPage,totalPages,onCurrentPageChange}) => {
     <div className="pagination">
       <a href="#">&laquo;</a>
       { Array(totalPages).fill(null).map((value,index) => ( 
-        <a key={index} value={index} href="#" className={(currentPage == index) ? "active" : "notActive"} onClick={handleSelectedChange}>{index+1}</a>)) 
+        <a key={index} value={index} href="#" className={(currentPage == index) ? "active" : "notActive"} onMouseDown={handleSelectedChange}>{index+1}</a>)) 
       }
       <a href="#">&raquo;</a>
     </div>

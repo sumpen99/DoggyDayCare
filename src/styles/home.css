@@ -12,6 +12,8 @@
     height:auto;
     max-width: min-content;
     max-height: min-content;
+    /*animation: spin 0.2s linear;*/
+    /*animation: center-animate 1s ease;*/
 }
 
 .container-label{
@@ -23,6 +25,20 @@
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+@keyframes center-animate {
+    0% {
+        transform: scaleX(120);
+    }
+    100% {
+        transform: scaleX(0);
+    }
 }
 
 

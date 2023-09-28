@@ -3,11 +3,15 @@
     width: 100vw;
     align-items:baseline;
     text-Align: 'center';
-
 }
 
 .container-body h1{
     padding-left: 20px;
+    white-space: nowrap;
+}
+
+.container-body h4{
+    white-space: nowrap;
 }
 
 .client-filter {
@@ -90,9 +94,8 @@ select{
 }
 
 .pagination {
-    padding: 20px;
     display: inline-block;
-}
+ }
   
 .pagination a {
     color: white;
@@ -103,9 +106,9 @@ select{
 }
 
 .pagination a.active {
-    background-color: #4CAF50;
+    background-color: #ffffff;
     color: black;
-    border: 1px solid #4CAF50;
+    border: 1px solid #ddd;
 }
 
 .pagination a:hover:not(.active) {
@@ -122,3 +125,10 @@ select{
     border-bottom-right-radius: 5px;
 }
 
+.container-pages{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 20px;
+    min-width: 200px;
+}

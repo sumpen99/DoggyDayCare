@@ -1,5 +1,5 @@
 // http://localhost:5173/
-export const CLIENTS_PER_PAGE = 3;
+export const CLIENTS_PER_PAGE = 30;
 
 export const FILTER_OPTION = Object.freeze({
     ALL:"All",
