@@ -25,11 +25,13 @@ export default async function makeRequest(selectedFilter,valueToMatch,currentPag
     onResetPage(0);
     updateLastRequest(selectedFilter,valueToMatch,clientsAvailable,filteredClients);
   }
+
   updateLastRequestWithPage(currentPage);
   onClientCountChange({
     totalClients:lastRequest.totalClientsAvailable,
     totalPages:Math.ceil(lastRequest.totalClientsAvailable/CLIENTS_PER_PAGE)
   });
+  
   return slicedFilteredClients(currentPage);
 }
 

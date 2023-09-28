@@ -24,7 +24,7 @@ function itemCount(currentPage,totalClients){
   let startItem = currentPage * CLIENTS_PER_PAGE + 1;
   startItem = startItem > totalClients ? totalClients : startItem;
   const endItem = Math.min(totalClients,startItem + CLIENTS_PER_PAGE - 1)
-  return `Show ${startItem} - ${endItem} of ${totalClients} items`;
+  return `Show ${startItem} - ${endItem} of ${totalClients} clients`;
 }
 
 const Clients = () => {
