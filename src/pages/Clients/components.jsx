@@ -13,11 +13,11 @@ export const Pagination = ({currentPage,totalPages,onCurrentPageChange}) => {
   
   return(
     <div className="pagination">
-      <a href="#">&laquo;</a>
+      <a href="#" value={Math.max(0,currentPage-1)} onMouseDown={handleSelectedChange}>&laquo;</a>
       { Array(totalPages).fill(null).map((value,index) => ( 
         <a key={index} value={index} href="#" className={(currentPage == index) ? "active" : "notActive"} onMouseDown={handleSelectedChange}>{index+1}</a>)) 
       }
-      <a href="#">&raquo;</a>
+      <a href="#" value={Math.min(currentPage+1,totalPages-1)} onMouseDown={handleSelectedChange}>&raquo;</a>
     </div>
   )
 }
