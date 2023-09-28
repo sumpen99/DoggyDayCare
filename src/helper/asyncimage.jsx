@@ -1,13 +1,13 @@
 import React from 'react';
 const FALLBACK_URL = "/src/assets/notfound.png";
-export default function AsyncImage(props){
+export default function AsyncImage({src}){
 
     const [loadedSrc, setLoadedSrc] = React.useState(null);
     React.useEffect(() => {
         setLoadedSrc(null);
-        if (props.src) {
+        if (src) {
             const handleLoad = () => {
-                setLoadedSrc(props.src);
+                setLoadedSrc(src);
             };
             const fallBack = () =>{
                 setLoadedSrc(FALLBACK_URL);
@@ -16,15 +16,15 @@ export default function AsyncImage(props){
             image.addEventListener('load', handleLoad);
             image.addEventListener('error', fallBack)
             
-            image.src = props.src;
+            image.src = src;
             
             return () => {
-                image.removeEventListener('error', handleLoad);
+                image.removeEventListener('error', fallBack);
                 image.removeEventListener('load', handleLoad);
             };
         }
-    }, [props.src]);
-    if (loadedSrc === props.src || loadedSrc === FALLBACK_URL) {
+    }, [src]);
+    if (loadedSrc === src || loadedSrc === FALLBACK_URL) {
         return (
             <img {...{src:loadedSrc}}/>
             //<img {...props}/>
