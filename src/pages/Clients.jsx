@@ -1,7 +1,9 @@
 import '../styles/clients.css';
+import { CoorTransition } from "../components/transition";
 import React, { useState, useEffect} from 'react';
 import { FILTER_OPTION,CLIENTS_PER_PAGE } from "../helper/core"
-import {FilterField,SearchField,ListOfClients,Pagination} from "./Clients/components"
+import {FilterField,SearchField,ListOfClients,Pagination} from "../components/clients"
+import { routeTransitionSpring,routeTransitionEase,routeTransitionBlackBox } from "../helper/transitiontypes";
 
 
 function useMergeState(initialState) {
@@ -54,24 +56,37 @@ const Clients = () => {
   },[filterOption,valueToMatch,currentPage])
 
   
+  const body = () => {
+    return (
+      <div className="container-body">
+      <h1 >Doggy DayCare</h1>
+      <div className="container-sort">
+          <FilterField filterOption={filterOption} onFilterOptionChange={setFilterOption}></FilterField>
+          <SearchField isDisabled={isDisabled(filterOption)} onValueToMatchChange={setValueToMatch}></SearchField>
+          <FilterField filterOption={filterOption} onFilterOptionChange={setFilterOption}></FilterField>
+      </div>
+      <div className="container-pages">
+        <h4> {itemCount(currentPage,clientCount.totalClients)}</h4>
+        <Pagination currentPage={currentPage} totalPages={clientCount.totalPages} onCurrentPageChange={setCurrentPage}></Pagination>
+      </div>
+      <div className="client-filter">
+        <ListOfClients filterRequest={filterRequest} onClientCountChange={setClientCount} onResetPage={setCurrentPage}></ListOfClients>
+      </div>
+    </div>
+    )
+  }
 
   return (
-    <div className="container-body">
-    <h1 >Doggy DayCare</h1>
-    <div className="container-sort">
-        <FilterField filterOption={filterOption} onFilterOptionChange={setFilterOption}></FilterField>
-        <SearchField isDisabled={isDisabled(filterOption)} onValueToMatchChange={setValueToMatch}></SearchField>
-        <FilterField filterOption={filterOption} onFilterOptionChange={setFilterOption}></FilterField>
-    </div>
-    <div className="container-pages">
-      <h4> {itemCount(currentPage,clientCount.totalClients)}</h4>
-      <Pagination currentPage={currentPage} totalPages={clientCount.totalPages} onCurrentPageChange={setCurrentPage}></Pagination>
-    </div>
-    <div className="client-filter">
-      <ListOfClients filterRequest={filterRequest} onClientCountChange={setClientCount} onResetPage={setCurrentPage}></ListOfClients>
-    </div>
-    </div>
+    <CoorTransition page={body}  name="home trans" transition={routeTransitionEase}/>
   );
   };
   
 export default Clients;
+
+/**
+ * ANIMATE TRANSITITON
+ * ADD LOADING
+ * UPDATE PAGINATION < [1][2][3] *** [17] >
+ * ADD CLIENTS PER PAGE
+ * MAKE CLIENT PAGE
+*/

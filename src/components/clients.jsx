@@ -1,9 +1,9 @@
-import '../../styles/clients.css';
+import '../styles/clients.css';
 import React, { useState, useEffect, useCallback} from 'react';
 import { Link } from "react-router-dom";
-import AsyncImage from "../../helper/asyncimage"
-import clientDataHandler from "../../helper/clientDataHandler"
-import { FILTER_OPTION,stringInterPolation} from "../../helper/core"
+import AsyncImage from "../helper/asyncimage"
+import clientDataHandler from "../helper/clientDataHandler"
+import { FILTER_OPTION,stringInterPolation} from "../helper/core"
 
 export const Pagination = ({currentPage,totalPages,onCurrentPageChange}) => {
   const handleSelectedChange = useCallback(event => {
