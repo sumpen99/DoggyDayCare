@@ -1,0 +1,31 @@
+.client-info-body{
+    height: 100vh;
+    width: 100vw;
+}
+
+.client-info-content{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.client-image-rounded{
+   max-width: 400px;
+   height: auto;
+   border: 5px solid white;
+   border-radius: 50%;
+   overflow: hidden;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   margin-top: 20px;
+ 
+}
+
+.client-image-rounded img{
+    max-height: auto;
+    max-width: 100%;
+    object-fit:fill;
+}

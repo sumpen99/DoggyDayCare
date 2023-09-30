@@ -75,7 +75,6 @@ select{
 
 .client-info {
     overflow-wrap: break-word;
-  
 }
 
 .search {
@@ -95,7 +94,7 @@ select{
 }
 
 .pagination {
-    display: inline-block;
+    display: flex;
  }
   
 .pagination a {

@@ -7,15 +7,19 @@ import Clients from "./pages/Clients";
 import Profile from "./pages/Profile";
 import Info from "./pages/Info";
 import NoPage from "./pages/NoPage";
-import { useState } from "react";
+import { useState,useEffect} from "react";
 
 function LocationProvider({ children }) {
   return <AnimatePresence >{children}</AnimatePresence>;
 }
 
-function RoutesWithAnimation({setInfoPageOpen}) {
+function RoutesWithAnimation({setHiddenMenu}) {
   const location = useLocation();
-  setInfoPageOpen(location.pathname==="/Info");
+
+  useEffect(() => {
+    setHiddenMenu(location.pathname==="/Info") 
+  },[location])
+
   return (
     <Routes location={location} key="default">
       <Route path="/" element={<Home />} />
@@ -28,19 +32,18 @@ function RoutesWithAnimation({setInfoPageOpen}) {
 }
 
 function App() {
+  const [hiddenMenu,setHiddenMenu] = useState(false);
 
-  const [infoPageOpen,setInfoPageOpen] = useState(false);
- 
   return (
     <div className="App">
+    <LoaderProvider>
       <BrowserRouter>
-      {!infoPageOpen && <NavBar />}
-        <LoaderProvider>
-          <LocationProvider>
-            <RoutesWithAnimation setInfoPageOpen={setInfoPageOpen}></RoutesWithAnimation>
-          </LocationProvider>
-        </LoaderProvider>
+      {!hiddenMenu && <NavBar />}
+        <LocationProvider>
+          <RoutesWithAnimation setHiddenMenu={setHiddenMenu}></RoutesWithAnimation>
+        </LocationProvider>
       </BrowserRouter>
+    </LoaderProvider>
     </div>
   );
 }

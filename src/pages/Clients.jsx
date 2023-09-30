@@ -3,7 +3,7 @@ import { CoorTransition } from "../components/transition";
 import React, { useState, useEffect} from 'react';
 import { FILTER_OPTION,CLIENTS_PER_PAGE } from "../helper/core"
 import {FilterField,SearchField,ListOfClients,Pagination} from "../components/clients"
-import { routeTransitionSpring,routeTransitionEase,routeTransitionBlackBox } from "../helper/transitiontypes";
+import { routeTransitionSpring,routeTransitionEase,routeTransitionBlackBox,routeTransitionSpringFromRight,routeTransitionOpacity  } from "../helper/transitiontypes";
 
 
 function useMergeState(initialState) {
@@ -59,7 +59,6 @@ const Clients = () => {
   const body = () => {
     return (
       <div className="container-body">
-      <h1 >Doggy DayCare</h1>
       <div className="container-sort">
           <FilterField filterOption={filterOption} onFilterOptionChange={setFilterOption}></FilterField>
           <SearchField isDisabled={isDisabled(filterOption)} onValueToMatchChange={setValueToMatch}></SearchField>
@@ -77,15 +76,13 @@ const Clients = () => {
   }
 
   return (
-    <CoorTransition page={body}  name="home trans" transition={routeTransitionEase}/>
+    <CoorTransition page={body}  name="home trans" transition={routeTransitionOpacity}/>
   );
   };
   
 export default Clients;
 
 /**
-
- * ADD LOADING
  * UPDATE PAGINATION < [1][2][3] *** [17] >
  * ADD CLIENTS PER PAGE
  * MAKE CLIENT PAGE

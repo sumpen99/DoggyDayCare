@@ -1,6 +1,6 @@
 import { CoorTransition } from "../components/transition";
 import '../styles/home.css';
-import { routeTransitionSpring,routeTransitionEase,routeTransitionBlackBox } from "../helper/transitiontypes";
+import { routeTransitionSpring,routeTransitionEase,routeTransitionBlackBox,routeTransitionOpacity } from "../helper/transitiontypes";
 
 
 
@@ -18,7 +18,7 @@ const Home = () => {
   }
   
   return (
-    <CoorTransition page={body} name="home trans" transition={routeTransitionSpring}/>
+    <CoorTransition page={body} name="home trans" transition={routeTransitionOpacity}/>
   );
 };
   

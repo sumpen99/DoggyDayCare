@@ -14,7 +14,7 @@ const NavBar = () => {
     <div className={isOpen ? "menu-bar responsive" : "menu-bar"} data-menu-bar id="toggle_button">
         <NavLink to="/" data-page="home">Home</NavLink>
         <NavLink to="/Clients" data-page="clients">Clients</NavLink>
-        <NavLink to="/Profile" data-page="profile">Profile</NavLink>
+        <NavLink to="/Profile" data-page="profile">Contact</NavLink>
         <a href="#" className="icon" onMouseDown={handleToggleMenu}> <i className="fa fa-bars"></i> </a>
     </div>
   )

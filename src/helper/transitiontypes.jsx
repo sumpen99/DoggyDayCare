@@ -11,6 +11,34 @@ export const routeTransitionSpring = {
     },
   };
 
+  export const routeTransitionSpringFromRight = {
+    initial: {
+      x: "100vw",
+    },
+    final: {
+      x: "0vw",
+      transition: {
+        type: "spring",
+        mass: 0.4,
+        ease: [0.5, 0.71, 1, 1.5],
+      },
+    },
+  };
+
+  export const routeTransitionSpringFromBottom = {
+    initial: {
+      y: "80vh",
+    },
+    final: {
+      y: "0vh",
+      transition: {
+        type: "spring",
+        mass: 0.4,
+        ease: [0.5, 0.71, 1, 1.5],
+      },
+    },
+  };
+
   export const routeTransitionEase = {
     initial:{ opacity: 0, scale: 0.5 },
     final: {
@@ -31,6 +59,7 @@ export const routeTransitionSpring = {
       opacity: 1,
       transition: {
         duration: 1.5,
+        ease: [0.5, 0.71, 1, 1.5],
       },
     },
   };
