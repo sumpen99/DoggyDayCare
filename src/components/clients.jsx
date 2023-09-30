@@ -1,5 +1,6 @@
 import '../styles/clients.css';
 import React, { useState, useEffect, useCallback} from 'react';
+import { useLoader } from '../helper/gloaballoading';
 import { Link } from "react-router-dom";
 import AsyncImage from "../helper/asyncimage"
 import clientDataHandler from "../helper/clientDataHandler"
@@ -67,12 +68,20 @@ export const ClientCard = (client) =>{
   
 export const ListOfClients = ({filterRequest,onClientCountChange,onResetPage}) =>{
   const [clients,setClients] = useState([]);
+  const {startLoader, stopLoader} = useLoader();
 
   useEffect(() => {
     const getClients = async event =>{
-      clientDataHandler(filterRequest.filterOption,filterRequest.valueToMatch,filterRequest.currentPage,onClientCountChange,onResetPage).then( filteredClients => {
+      startLoader();
+      clientDataHandler(filterRequest,onClientCountChange,onResetPage)
+      .then( filteredClients => {
         setClients(filteredClients);
-      });
+        stopLoader();
+      })
+      .catch(() =>{
+        stopLoader();
+        //SHOW INFO
+      })
     }
     getClients()
   },[filterRequest])

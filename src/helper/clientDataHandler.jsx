@@ -11,8 +11,13 @@ let lastRequest = {
 };
 
  //stringInterPolation(selectedFilter,valueToMatch);
-export default async function makeRequest(selectedFilter,valueToMatch,currentPage,onClientCountChange,onResetPage) {
-  console.log("we are re-loading")
+export default async function makeRequest(filterRequest,onClientCountChange,onResetPage) {
+  const selectedFilter = filterRequest.filterOption;
+  const valueToMatch = filterRequest.valueToMatch;
+  let currentPage = filterRequest.currentPage;
+
+  //stringInterPolation(filterRequest,selectedFilter,valueToMatch,currentPage);
+  
   if(!cache) {
     const response = await fetch(baseUrl);
     const clientData = await response.json();

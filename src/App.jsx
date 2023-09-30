@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route,useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import { LoaderProvider } from "./helper/gloaballoading";
 import NavBar from "./navigation/NavBar";
 import Home from "./pages/Home";
 import Clients from "./pages/Clients";
@@ -32,12 +33,14 @@ function App() {
  
   return (
     <div className="App">
-    <BrowserRouter>
+      <BrowserRouter>
       {!infoPageOpen && <NavBar />}
-      <LocationProvider>
-        <RoutesWithAnimation setInfoPageOpen={setInfoPageOpen}></RoutesWithAnimation>
-      </LocationProvider>
-     </BrowserRouter>
+        <LoaderProvider>
+          <LocationProvider>
+            <RoutesWithAnimation setInfoPageOpen={setInfoPageOpen}></RoutesWithAnimation>
+          </LocationProvider>
+        </LoaderProvider>
+      </BrowserRouter>
     </div>
   );
 }

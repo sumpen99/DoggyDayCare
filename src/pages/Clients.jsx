@@ -84,7 +84,7 @@ const Clients = () => {
 export default Clients;
 
 /**
- * ANIMATE TRANSITITON
+
  * ADD LOADING
  * UPDATE PAGINATION < [1][2][3] *** [17] >
  * ADD CLIENTS PER PAGE
