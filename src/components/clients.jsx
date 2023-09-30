@@ -55,7 +55,7 @@ export  const SearchField = ({isDisabled,onValueToMatchChange}) =>{
 export const ClientCard = (client) =>{
   return(
     <div key={Math.random()} className="client-card" >
-      <Link to="/Info" data-page="info" preventScrollReset={true} state={{ client: client }}>
+      <Link to="/Info" data-page="info" preventScrollReset={true} replace={true} state={{ client: client }}>
       <div className="client-image"> <AsyncImage src={client.img}></AsyncImage> </div>
       </Link>
       <div className="client-info">

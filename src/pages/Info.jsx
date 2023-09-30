@@ -14,7 +14,7 @@ const Info = () => {
         <BackButton icon= {String.fromCharCode(0xab)} title=" Clients" label={client.name}/>
         <div className="client-info-content" >
           <div className="client-image-rounded"> <AsyncImage src={client.img}></AsyncImage> </div>
-      </div>
+        </div>
       </div>
       
     );

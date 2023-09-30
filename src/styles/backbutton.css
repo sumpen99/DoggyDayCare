@@ -1,5 +1,6 @@
 .backbutton-body{
   display: flex;
+  background-color: rgba(0, 0, 0, 0.4);
   border-bottom: 1px solid #aaa;
 }
 

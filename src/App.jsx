@@ -15,7 +15,6 @@ function LocationProvider({ children }) {
 
 function RoutesWithAnimation({setHiddenMenu}) {
   const location = useLocation();
-
   useEffect(() => {
     setHiddenMenu(location.pathname==="/Info") 
   },[location])
