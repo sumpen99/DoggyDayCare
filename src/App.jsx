@@ -18,25 +18,12 @@ function LocationProvider({ children }) {
   return <AnimatePresence >{children}</AnimatePresence>;
 }
 
-function RoutesWithAnimation({setHiddenMenu}) {
+function RoutesWithAnimationAndRoutClients({setHiddenMenu}) {
   const location = useLocation();
   useEffect(() => {
     setHiddenMenu(rgx.test(location.pathname)); 
   },[location])
 
-  // SHEET WAY
-  if(LOAD_SHEET){
-    return (
-      <Routes location={location} key="default">
-        <Route path="/" element={<Home />} />
-        <Route path="/clients" element={<ClientsSheet />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="*" element={<NoPage />} />
-      </Routes>
-    );
-  }
- 
-  // ROUTE WAY
   return (
     <Routes location={location} key="default">
       <Route path="/" element={<Home />} />
@@ -50,16 +37,47 @@ function RoutesWithAnimation({setHiddenMenu}) {
   );
 }
 
+function RoutesWithAnimationAndSheetClients() {
+  const location = useLocation();
+  
+  return (
+    <Routes location={location} key="default">
+      <Route path="/" element={<Home />} />
+      <Route path="/clients" element={<ClientsSheet />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="*" element={<NoPage />} />
+    </Routes>
+  );
+ 
+}
+
 function App() {
   const [hiddenMenu,setHiddenMenu] = useState(false);
 
+  // SHEET WAY
+  if(LOAD_SHEET){
+    return (
+      <div className="App">
+      <LoaderProvider>
+        <BrowserRouter>
+        <NavBar/>
+          <LocationProvider>
+            <RoutesWithAnimationAndSheetClients/>
+          </LocationProvider>
+        </BrowserRouter>
+      </LoaderProvider>
+      </div>
+    );
+  }
+
+  // ROUTE WAY
   return (
     <div className="App">
     <LoaderProvider>
       <BrowserRouter>
       {!hiddenMenu && <NavBar />}
         <LocationProvider>
-          <RoutesWithAnimation setHiddenMenu={setHiddenMenu}></RoutesWithAnimation>
+          <RoutesWithAnimationAndRoutClients setHiddenMenu={setHiddenMenu}></RoutesWithAnimationAndRoutClients>
         </LocationProvider>
       </BrowserRouter>
     </LoaderProvider>
