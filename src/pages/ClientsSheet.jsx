@@ -2,9 +2,13 @@ import '../styles/clients.css';
 import { CoorTransition } from "../components/transition";
 import React, { useState, useEffect} from 'react';
 import { FILTER_OPTION,CLIENTS_PER_PAGE } from "../helper/core"
-import {FilterField,SearchField,ListOfClients,Pagination} from "../components/clients"
+import {FilterField,SearchField,Pagination} from "../components/optionofclients"
+import {ListOfClientsSheet} from "../components/listofclients"
 import { routeTransitionOpacity  } from "../helper/transitiontypes";
 import { ClientSheet } from '../components/sheet';
+import { stringInterPolation } from '../helper/core';
+
+
 function useMergeState(initialState) {
   const [state, setState] = useState(initialState);
   const setMergedState = newState => 
@@ -29,7 +33,7 @@ function itemCount(currentPage,totalClients){
 }
 
 
-const Clients = () => {
+const ClientsSheet = () => {
   const [sheetIsOpen] = useState(false);
   const [currentClient] = useState(null);
   const [filterOption,setFilterOption] = useState(FILTER_OPTION.ALL);
@@ -69,7 +73,7 @@ const Clients = () => {
     })
   },[])
 
-  const body = () => {
+  const bodySheet = () => {
     return (
       <>
       <ClientSheet sheetOption={sheetOption}/>
@@ -84,7 +88,7 @@ const Clients = () => {
         <Pagination currentPage={currentPage} totalPages={clientCount.totalPages} onCurrentPageChange={setCurrentPage}></Pagination>
       </div>
       <div className="client-filter">
-        <ListOfClients filterRequest={filterRequest} onClientCountChange={setClientCount} onResetPage={setCurrentPage} setSheetOption={setSheetOption}></ListOfClients>
+        <ListOfClientsSheet filterRequest={filterRequest} onClientCountChange={setClientCount} onResetPage={setCurrentPage} setSheetOption={setSheetOption}></ListOfClientsSheet>
       </div>
       </div>
       </>
@@ -92,16 +96,8 @@ const Clients = () => {
   }
 
   return (
-    <CoorTransition page={body}  name="home trans" transition={routeTransitionOpacity}/>
+    <CoorTransition page={bodySheet}  name="home trans" transition={routeTransitionOpacity}/>
   );
   };
   
-export default Clients;
-
-/**
- * <InfoSheet/>
- * <Outlet/>
- * UPDATE PAGINATION < [1][2][3] *** [17] >
- * ADD CLIENTS PER PAGE
- * MAKE CLIENT PAGE
-*/
+export default ClientsSheet;
