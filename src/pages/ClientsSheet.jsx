@@ -29,7 +29,7 @@ const ClientsSheet = () => {
   const [sheetIsOpen] = useState(false);
   const [currentClient] = useState(null);
   const [filterOption,setFilterOption] = useState(FILTER_OPTION.ALL);
-  const [perPageOption,setPerPageOption] = useState(CLIENTS_PER_PAGE_OPTION.FOUR);
+  const [perPageOption,setPerPageOption] = useState(CLIENTS_PER_PAGE_OPTION.SIXTEEN);
   const [valueToMatch,setValueToMatch] = useState("");
   const [totalClients] = useState(0);
   const [totalPages] = useState(0);
