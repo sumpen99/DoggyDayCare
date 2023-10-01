@@ -3,18 +3,24 @@ import { useLoader } from '../helper/gloaballoading';
 import { Link } from "react-router-dom";
 import AsyncImage from "../helper/asyncimage"
 import clientDataHandler from "../helper/clientDataHandler"
+import { capitalizeFirstLetter } from '../helper/core';
 
 const ClientCardRoute = ({client}) =>{
     return(
-      <div className="client-card" >
-        <Link to={client.name} data-page="info" state={{ client: client }}>
-        <div className="client-image"> <AsyncImage src={client.img}></AsyncImage> </div>
-        </Link>
-        <div className="client-info">
-          <h5>{client.name}</h5>
-          <h6>{client.breed}</h6>
+        <div className="client-card" >
+            <div className="client-dog-name">
+                <h1>{client.name}</h1>
+            </div>
+            <div className="client-image"> 
+                <AsyncImage src={client.img}></AsyncImage> 
+            </div>
+            <Link to={client.name} data-page="info" state={{ client: client }}>
+                <div className="client-breed-user-name">
+                    <h5>{capitalizeFirstLetter(client.breed)}</h5>
+                    <h5>{client.owner.name}</h5>
+                </div>
+            </Link>
         </div>
-      </div>
     );
   }
   
@@ -28,16 +34,17 @@ const ClientCardSheet = ({client,setSheetOption}) =>{
     },[setSheetOption])
 
     return(
-        <div className="client-card" >
-        <div className="client-image"> 
-            <button onMouseDown={handleOnClick}>
-            <AsyncImage src={client.img} ></AsyncImage>
-            </button>
-        </div>
-        <div className="client-info">
-            <h5>{client.name}</h5>
-            <h6>{client.breed}</h6>
-        </div>
+        <div className="client-card">
+            <div className="client-dog-name">
+                <h1>{client.name}</h1>
+            </div>
+            <div className="client-image"> 
+                <AsyncImage src={client.img} ></AsyncImage>
+            </div>
+            <div className="client-breed-user-name" onMouseDown={handleOnClick}>
+                <h5>{capitalizeFirstLetter(client.breed)}</h5>
+                <h5>{client.owner.name}</h5>
+            </div>
         </div>
     );
 }

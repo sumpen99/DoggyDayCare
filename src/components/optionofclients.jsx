@@ -77,16 +77,14 @@ export  const SearchField = ({isDisabled,onValueToMatchChange}) =>{
 }
 
 export const ItemsShownedLabel = ({currentPage,totalClients,perPageOption}) =>{
-  
-  function calculateNewlabel(){
-    let startItem = currentPage * perPageOption + 1;
-    startItem = startItem > totalClients ? totalClients : startItem;
-    const endItem = Math.min(totalClients,startItem + perPageOption - 1)
-    return `Show ${startItem} - ${endItem} of ${totalClients} clients`;
-  }
-
-
   return(
-    <h4> {calculateNewlabel()}</h4>
+    <h4> {calculateNewlabel(currentPage,totalClients,perPageOption)}</h4>
   );
+}
+
+function calculateNewlabel(currentPage,totalClients,perPageOption){
+  let startItem = currentPage * perPageOption + 1;
+  startItem = startItem > totalClients ? totalClients : startItem;
+  const endItem = Math.min(totalClients,startItem + perPageOption - 1)
+  return `Show ${startItem} - ${endItem} of ${totalClients} clients`;
 }
