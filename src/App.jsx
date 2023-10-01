@@ -5,9 +5,12 @@ import NavBar from "./navigation/NavBar";
 import Home from "./pages/Home";
 import Clients from "./pages/Clients";
 import Profile from "./pages/Profile";
-import Info from "./pages/Info";
+import {InfoPageRoute} from "./pages/Info";
 import NoPage from "./pages/NoPage";
 import { useState,useEffect} from "react";
+
+const str = "/Clients/";
+const rgx = new RegExp(str);
 
 function LocationProvider({ children }) {
   return <AnimatePresence >{children}</AnimatePresence>;
@@ -16,15 +19,17 @@ function LocationProvider({ children }) {
 function RoutesWithAnimation({setHiddenMenu}) {
   const location = useLocation();
   useEffect(() => {
-    setHiddenMenu(location.pathname==="/Info") 
+    setHiddenMenu(rgx.test(location.pathname)); 
   },[location])
 
   return (
     <Routes location={location} key="default">
       <Route path="/" element={<Home />} />
-      <Route path="/clients" element={<Clients />} />
+      <Route path="/clients" >
+        <Route index={true} element={<Clients />} />
+        <Route path=":clientId" element={<InfoPageRoute />} />
+      </Route>
       <Route path="/profile" element={<Profile />} />
-      <Route path="/info" element={<Info />} />
       <Route path="*" element={<NoPage />} />
     </Routes>
   );

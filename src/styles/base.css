@@ -26,5 +26,13 @@
   }
 
 
+ /* .ReactModalPortal .ReactModal__Overlay.ReactModal__Overlay--after-open {
+    background-color: unset !important;
+  }
+
+  .modal-backdrop.show {
+    opacity: 0 !important;
+}*/
+
 
   

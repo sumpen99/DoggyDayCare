@@ -6,6 +6,7 @@ import AsyncImage from "../helper/asyncimage"
 import clientDataHandler from "../helper/clientDataHandler"
 import { FILTER_OPTION,stringInterPolation} from "../helper/core"
 
+
 export const Pagination = ({currentPage,totalPages,onCurrentPageChange}) => {
   const handleSelectedChange = useCallback(event => {
     const index = event.target.getAttribute("value");
@@ -52,10 +53,10 @@ export  const SearchField = ({isDisabled,onValueToMatchChange}) =>{
   );
 }
   
-export const ClientCard = (client) =>{
+const ClientCardRoute = (client) =>{
   return(
     <div key={Math.random()} className="client-card" >
-      <Link to="/Info" data-page="info" preventScrollReset={true} replace={true} state={{ client: client }}>
+      <Link to={client.name} data-page="info" state={{ client: client }}>
       <div className="client-image"> <AsyncImage src={client.img}></AsyncImage> </div>
       </Link>
       <div className="client-info">
@@ -65,13 +66,38 @@ export const ClientCard = (client) =>{
     </div>
   );
 }
+
+const ClientCardSheet = ({client,setSheetOption}) =>{
+
+  const handleOnClick = useCallback(event => {
+    setSheetOption({
+      isOpen: true,
+      currentClient: client,
+    })
+  },[setSheetOption])
+
+  return(
+    <div className="client-card" >
+      <div className="client-image"> 
+        <button onMouseDown={handleOnClick}>
+          <AsyncImage src={client.img} ></AsyncImage>
+        </button>
+     </div>
+      <div className="client-info">
+        <h5>{client.name}</h5>
+        <h6>{client.breed}</h6>
+      </div>
+    </div>
+  );
+}
   
-export const ListOfClients = ({filterRequest,onClientCountChange,onResetPage}) =>{
+export const ListOfClients = ({filterRequest,onClientCountChange,onResetPage,setSheetOption}) =>{
   const [clients,setClients] = useState([]);
   const {startLoader, stopLoader} = useLoader();
-
+  
   useEffect(() => {
     const getClients = async event =>{
+      console.log("new page");
       startLoader();
       clientDataHandler(filterRequest,onClientCountChange,onResetPage)
       .then( filteredClients => {
@@ -86,10 +112,14 @@ export const ListOfClients = ({filterRequest,onClientCountChange,onResetPage}) =
     getClients()
   },[filterRequest])
   
+  /*return (
+    <section className="section-clients">
+      {clients.map(client => ClientCardRoute(client,showInfoAboutClient) )}
+    </section>
+  );*/
   return (
     <section className="section-clients">
-      {clients.map(client => ClientCard(client) )}
+      {clients.map(client => <ClientCardSheet key={Math.random()} client={client} setSheetOption={setSheetOption}/> )}
     </section>
-    );
-
+  );
 }

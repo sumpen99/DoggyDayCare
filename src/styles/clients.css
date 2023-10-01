@@ -77,6 +77,13 @@ select{
     overflow-wrap: break-word;
 }
 
+.client-image button{
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+}
+
 .search {
     display: flex;
     flex-wrap: wrap;

@@ -1,10 +1,9 @@
-import { useNavigate } from "react-router-dom";
 import "../styles/backbutton.css"
-export const BackButton = ({icon,title,label}) => {
-    const navigate = useNavigate();
+export const BackButton = ({icon,title,label,action}) => {
+
     return (
           <div className="backbutton-body">
-            <button className="backbutton" onClick={() => navigate(-1)}>
+            <button className="backbutton" onMouseDown={action}>
               <div className="backbutton-container">
                 <h2>{icon}</h2>
                 <h3>{title}</h3>
