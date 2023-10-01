@@ -1,9 +1,8 @@
 import "../styles/backbutton.css"
-export const BackButton = ({icon,title,label,action}) => {
-
+export const BackButton = ({icon,title,label,onCloseAction}) => {
     return (
           <div className="backbutton-body">
-            <button className="backbutton" onMouseDown={action}>
+            <button className="backbutton" onMouseDown={onCloseAction}>
               <div className="backbutton-container">
                 <h2>{icon}</h2>
                 <h3>{title}</h3>

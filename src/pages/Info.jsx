@@ -33,7 +33,6 @@ export const InfoPageRoute = () => {
   
 
 // SHEET
-
 export const InfoPageSheet = ({client,closeSheet}) => {
   const body = () =>{
     return(
