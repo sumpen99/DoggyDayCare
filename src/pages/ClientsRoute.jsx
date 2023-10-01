@@ -1,8 +1,8 @@
 import '../styles/clients.css';
 import { CoorTransition } from "../components/transition";
 import React, { useState, useEffect} from 'react';
-import { FILTER_OPTION,CLIENTS_PER_PAGE } from "../helper/core"
-import {FilterField,SearchField,Pagination} from "../components/optionofclients"
+import { FILTER_OPTION,CLIENTS_PER_PAGE_OPTION } from "../helper/core"
+import {ClientsPerPage,FilterField,SearchField,Pagination,ItemsShownedLabel} from "../components/optionofclients"
 import {ListOfClientsRoute} from "../components/listofclients"
 import { routeTransitionOpacity  } from "../helper/transitiontypes";
 import { Outlet } from "react-router-dom";
@@ -26,18 +26,10 @@ function isDisabled(filterOption){
           filterOption === FILTER_OPTION.FEMALE;
 }
 
-function itemCount(currentPage,totalClients){
-  let startItem = currentPage * CLIENTS_PER_PAGE + 1;
-  startItem = startItem > totalClients ? totalClients : startItem;
-  const endItem = Math.min(totalClients,startItem + CLIENTS_PER_PAGE - 1)
-  return `Show ${startItem} - ${endItem} of ${totalClients} clients`;
-}
-
 
 const ClientsRoute = () => {
-  const [sheetIsOpen] = useState(false);
-  const [currentClient] = useState(null);
   const [filterOption,setFilterOption] = useState(FILTER_OPTION.ALL);
+  const [perPageOption,setPerPageOption] = useState(CLIENTS_PER_PAGE_OPTION.FOUR);
   const [valueToMatch,setValueToMatch] = useState("");
   const [totalClients] = useState(0);
   const [totalPages] = useState(0);
@@ -46,7 +38,8 @@ const ClientsRoute = () => {
   const [filterRequest, setFilterRequest] = useMergeState({
     filterOption: filterOption,
     valueToMatch: valueToMatch,
-    currentPage:currentPage
+    currentPage:currentPage,
+    perPageOption:perPageOption
   });
 
   const [clientCount, setClientCount] = useMergeState({
@@ -54,25 +47,14 @@ const ClientsRoute = () => {
     totalPages: totalPages
   });
 
-  const [sheetOption, setSheetOption] = useMergeState({
-    isOpen: sheetIsOpen,
-    currentClient: currentClient,
-  });
-
   useEffect(() => {
     setFilterRequest({
       filterOption: filterOption,
       valueToMatch: valueToMatch,
-      currentPage:currentPage
+      currentPage:currentPage,
+      perPageOption:perPageOption
     })
-  },[filterOption,valueToMatch,currentPage])
-
-  useEffect(() => {
-    setSheetOption({
-      isOpen: false,
-      currentClient: null,
-    })
-  },[])
+  },[filterOption,valueToMatch,currentPage,perPageOption])
 
   const bodyRoute = () => {
     return (
@@ -82,14 +64,14 @@ const ClientsRoute = () => {
       <div className="container-sort">
           <FilterField filterOption={filterOption} onFilterOptionChange={setFilterOption}></FilterField>
           <SearchField isDisabled={isDisabled(filterOption)} onValueToMatchChange={setValueToMatch}></SearchField>
-          <FilterField filterOption={filterOption} onFilterOptionChange={setFilterOption}></FilterField>
+          <ClientsPerPage perPageOption={perPageOption} onPerPageOptionChange={setPerPageOption}></ClientsPerPage>
       </div>
       <div className="container-pages">
-        <h4> {itemCount(currentPage,clientCount.totalClients)}</h4>
+        <ItemsShownedLabel currentPage= {currentPage} totalClients={clientCount.totalClients} perPageOption={perPageOption}></ItemsShownedLabel>
         <Pagination currentPage={currentPage} totalPages={clientCount.totalPages} onCurrentPageChange={setCurrentPage}></Pagination>
       </div>
       <div className="client-filter">
-        <ListOfClientsRoute filterRequest={filterRequest} onClientCountChange={setClientCount} onResetPage={setCurrentPage} setSheetOption={setSheetOption}></ListOfClientsRoute>
+        <ListOfClientsRoute filterRequest={filterRequest} onClientCountChange={setClientCount} onResetPage={setCurrentPage}></ListOfClientsRoute>
       </div>
       </div>
       </>
@@ -100,5 +82,4 @@ const ClientsRoute = () => {
     <CoorTransition page={bodyRoute}  name="home trans" transition={routeTransitionOpacity}/>
   );
   };
-  
 export default ClientsRoute;

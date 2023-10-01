@@ -69,7 +69,7 @@ export const ListOfClientsSheet = ({filterRequest,onClientCountChange,onResetPag
     );
 }
   
-export const ListOfClientsRoute = ({filterRequest,onClientCountChange,onResetPage,setSheetOption}) =>{
+export const ListOfClientsRoute = ({filterRequest,onClientCountChange,onResetPage}) =>{
     const [clients,setClients] = useState([]);
     const {startLoader, stopLoader} = useLoader();
 

@@ -13,6 +13,14 @@ export const FILTER_OPTION = Object.freeze({
     OWNER:"Owner",
 });
 
+export const CLIENTS_PER_PAGE_OPTION = Object.freeze({
+    FOUR:4,
+    EIGHT:8,
+    SIXTEEN:16,
+    THIRTYTWO:32,
+    ONE_HUNDRED:100
+});
+
 export function stringInterPolation(...args){
     let str = "";
     args.forEach( (arg) =>
