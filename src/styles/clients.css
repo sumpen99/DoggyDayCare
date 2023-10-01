@@ -34,6 +34,10 @@
    flex-direction: column;
 }
 
+.collection-sort label{
+    white-space: nowrap;
+ }
+
 select{
     display: flex;
     flex-direction: row;
@@ -101,7 +105,12 @@ select{
 }
 
 .pagination {
+    width: 80vw;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 20px;
  }
   
 .pagination a {
@@ -137,5 +146,6 @@ select{
     flex-direction: column;
     align-items: center;
     padding-left: 20px;
-    min-width: 200px;
+  
+   
 }
