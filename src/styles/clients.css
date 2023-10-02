@@ -57,8 +57,8 @@ select{
     padding-bottom: 5px;
     border-radius: 6px;
     border: 2px solid #666666;
-    width:120px;
-    font-size: 30px;
+    width:60px;
+    font-size: 20px;
 }
 
 .search {
@@ -66,7 +66,7 @@ select{
     border-radius: 20px;
     outline: 0;
     background-color: #f5f5f5;
-    font-size: 30px;
+    font-size: 20px;
     width:100%;
     padding: 10px;
     margin-top: 20px;
