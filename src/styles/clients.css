@@ -67,13 +67,12 @@ select{
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
-    /*justify-content: center;*/
+    justify-content: center;
 }
  
 .client-card {
-    padding: 2%;
+    padding: 20px;
     flex-grow: 1;
-    flex-basis: 16%;
     margin: 10px;
     text-align: center;
     display: flex;
@@ -84,7 +83,7 @@ select{
     border-radius: 10px;
     width: 130px;
     /*max-width: 40vw;
-    min-width: 130px;/*
+    min-width: 130px;*/
 }
 
 .client-image{
