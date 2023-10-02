@@ -11,7 +11,6 @@ let lastRequest = {
   filteredClients:null
 };
 
- //stringInterPolation(selectedFilter,valueToMatch);
 export default async function makeRequest(filterRequest,onClientCountChange,onResetPage) {
   const selectedFilter = filterRequest.filterOption;
   const valueToMatch = filterRequest.valueToMatch;
@@ -23,6 +22,7 @@ export default async function makeRequest(filterRequest,onClientCountChange,onRe
     const clientData = await response.json();
     cache = clientData.record;
   } 
+
   if(notSameFilterAsLastOne(selectedFilter,valueToMatch,perPageOption)){
     const filteredClients = filterData(selectedFilter,valueToMatch);
     const clientsAvailable = filteredClients.length;
@@ -32,6 +32,7 @@ export default async function makeRequest(filterRequest,onClientCountChange,onRe
   }
 
   updateLastRequestWithPage(currentPage);
+
   onClientCountChange({
     totalClients:lastRequest.totalClientsAvailable,
     totalPages:Math.ceil(lastRequest.totalClientsAvailable/perPageOption)
@@ -71,7 +72,7 @@ function filterClient(client,selectedFilter,valueToMatch){
     case FILTER_OPTION.BREED:   return client.breed.toLowerCase().includes(valueToMatch.toLowerCase());
     case FILTER_OPTION.MALE:    return client.sex.toLowerCase() === "male";
     case FILTER_OPTION.FEMALE:  return client.sex.toLowerCase() === "female";
-    case FILTER_OPTION.AGE:     return client.age == valueToMatch;
+    case FILTER_OPTION.AGE:     return client.age === valueToMatch;
     case FILTER_OPTION.OWNER:   return client.owner.name.toLowerCase().includes(valueToMatch.toLowerCase()) || client.owner.lastName.toLowerCase().includes(valueToMatch.toLowerCase());
     default:                    return false;
   };

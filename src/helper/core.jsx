@@ -1,5 +1,4 @@
 // http://localhost:5173/
-export const CLIENTS_PER_PAGE = 30;
 
 export const FILTER_OPTION = Object.freeze({
     ALL:"All",
@@ -30,7 +29,10 @@ export function stringInterPolation(...args){
 }
 
 export async function parseBreedFromListOfClients(clients){
-    return new Promise( resolve => { const breeds = parseBreeds(clients); resolve(breeds); })
+    return new Promise( resolve => { 
+        const breeds = parseBreeds(clients); 
+        resolve(breeds); 
+    });
 }
 
 function parseBreeds(clients){
