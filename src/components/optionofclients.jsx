@@ -16,6 +16,7 @@ export const Pagination = ({currentPage,totalPages,onCurrentPageChange}) => {
   })
 
   const handleSelectedIncreaseChange = useCallback(event => {
+    console.log(totalPages)
     let newPage = currentPage+1;
     onCurrentPageChange(newPage > (totalPages-1) ? (totalPages-1) : newPage);
   })
@@ -26,11 +27,12 @@ export const Pagination = ({currentPage,totalPages,onCurrentPageChange}) => {
       { Array(totalPages).fill(null).map((value,index) => ( 
         <a key={index} value={index} href="#" className={(currentPage == index) ? "active" : "notActive"} onMouseDown={handleSelectedChange}>{index+1}</a>)) 
       }
-      <a href="#" onMouseDown={handleSelectedIncreaseChange}>&raquo;</a>
+      <a href="#" onMouseDown={handleSelectedIncreaseChange}>&gt;</a>
     </div>
   )
 }
 
+//raquo
 export const FilterField = ({filterOption,onFilterOptionChange}) =>{
   const handleSelectedChange = useCallback(event => {
     onFilterOptionChange(event.target.value);

@@ -5,9 +5,9 @@ import NavBar from "./navigation/NavBar";
 import Home from "./pages/Home";
 import ClientsSheet from "./pages/ClientsSheet";
 import ClientsRoute from "./pages/ClientsRoute";
-import Profile from "./pages/Profile";
+import Contact from "./pages/Contact";
 import {InfoPageRoute} from "./pages/Info";
-import NoPage from "./pages/NoPage";
+import Error from "./pages/Error";
 import { useState,useEffect} from "react";
 
 const LOAD_SHEET = true;
@@ -31,8 +31,8 @@ function RoutesWithAnimationAndRoutClients({setHiddenMenu}) {
         <Route index={true} element={<ClientsRoute />} />
         <Route path=":clientId" element={<InfoPageRoute />} />
       </Route>
-      <Route path="/profile" element={<Profile />} />
-      <Route path="*" element={<NoPage />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="*" element={<Error />} />
     </Routes>
   );
 }
@@ -44,8 +44,8 @@ function RoutesWithAnimationAndSheetClients() {
     <Routes location={location} key="default">
       <Route path="/" element={<Home />} />
       <Route path="/clients" element={<ClientsSheet />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="*" element={<NoPage />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="*" element={<Error />} />
     </Routes>
   );
  

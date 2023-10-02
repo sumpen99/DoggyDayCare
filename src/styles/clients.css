@@ -1,16 +1,16 @@
-.container-body{
+.container-body-clients{
     height: 100vh;
     width: 100vw;
     align-items:baseline;
     text-Align: 'center';
 }
 
-.container-body h1{
+.container-body-clients h1{
     padding-left: 20px;
     white-space: nowrap;
 }
 
-.container-body h4{
+.container-body-clients h4{
     white-space: nowrap;
 }
 
@@ -54,7 +54,7 @@ select{
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
-    
+    /*justify-content: center;*/
 }
  
 .client-card {

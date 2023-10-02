@@ -74,7 +74,7 @@ const ClientsSheet = () => {
     return (
       <>
       <ClientSheet sheetOption={sheetOption}/>
-      <div className="container-body">
+      <div className="container-body-clients">
       <div className="container-sort">
           <FilterField filterOption={filterOption} onFilterOptionChange={setFilterOption}></FilterField>
           <SearchField isDisabled={isDisabled(filterOption)} onValueToMatchChange={setValueToMatch}></SearchField>
