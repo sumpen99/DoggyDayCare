@@ -29,9 +29,8 @@
 
 .collection-sort{
    padding: 10px;
-   display: flex;
-   flex-direction: column;
-   width: 33vw;
+   flex: 1 1 0px;
+   width: 0;
    font-size: inherit;
 }
 
@@ -40,15 +39,19 @@
  }
 
 select{
-    display: flex;
-    flex-direction: row;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 6px;
     border: 2px solid #666666;
+    font-size: inherit;
 }
+
+input{
+    font-size: inherit;
+}
+
 
 .section-clients {
     display: flex;
@@ -134,7 +137,7 @@ select{
 }
 
 .pagination {
-    width: 80vw;
+    width: 100vw;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
