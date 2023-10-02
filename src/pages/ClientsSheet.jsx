@@ -75,18 +75,18 @@ const ClientsSheet = () => {
       <>
       <ClientSheet sheetOption={sheetOption}/>
       <div className="container-body-clients">
-      <div className="container-sort">
-          <FilterField filterOption={filterOption} onFilterOptionChange={setFilterOption}></FilterField>
-          <SearchField isDisabled={isDisabled(filterOption)} onValueToMatchChange={setValueToMatch}></SearchField>
-          <ClientsPerPage perPageOption={perPageOption} onPerPageOptionChange={setPerPageOption}></ClientsPerPage>
-      </div>
-      <div className="container-pages">
-        <ItemsShownedLabel currentPage= {currentPage} totalClients={clientCount.totalClients} perPageOption={perPageOption}></ItemsShownedLabel>
-        <Pagination currentPage={currentPage} totalPages={clientCount.totalPages} onCurrentPageChange={setCurrentPage}></Pagination>
-      </div>
-      <div className="client-filter">
-        <ListOfClientsSheet filterRequest={filterRequest} onClientCountChange={setClientCount} onResetPage={setCurrentPage} setSheetOption={setSheetOption}></ListOfClientsSheet>
-      </div>
+        <div className="container-sort">
+            <FilterField filterOption={filterOption} onFilterOptionChange={setFilterOption}></FilterField>
+            <SearchField isDisabled={isDisabled(filterOption)} onValueToMatchChange={setValueToMatch}></SearchField>
+            <ClientsPerPage perPageOption={perPageOption} onPerPageOptionChange={setPerPageOption}></ClientsPerPage>
+        </div>
+        <div className="container-pages">
+          <ItemsShownedLabel currentPage= {currentPage} totalClients={clientCount.totalClients} perPageOption={perPageOption}></ItemsShownedLabel>
+          <Pagination currentPage={currentPage} totalPages={clientCount.totalPages} onCurrentPageChange={setCurrentPage}></Pagination>
+        </div>
+        <div className="client-filter">
+          <ListOfClientsSheet filterRequest={filterRequest} onClientCountChange={setClientCount} onResetPage={setCurrentPage} setSheetOption={setSheetOption}></ListOfClientsSheet>
+        </div>
       </div>
       </>
     )
