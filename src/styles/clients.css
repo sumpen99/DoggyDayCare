@@ -25,14 +25,14 @@
 .container-sort {
     padding: 10px;
     display: flex;
-    height:62px;
 }
 
 .collection-sort{
    padding: 10px;
    display: flex;
    flex-direction: column;
-   max-width: 80px;
+   width: 33vw;
+   font-size: inherit;
 }
 
 .collection-sort label{
@@ -125,7 +125,8 @@ select{
     border-radius: 5px;
     outline: 0;
     background-color: #f5f5f5;
-    max-width: 250px;
+    width: 66vw;
+    font-size: inherit;
 }
 
 .search:disabled{
@@ -137,7 +138,7 @@ select{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content:flex-start;
     padding-bottom: 20px;
  }
   
