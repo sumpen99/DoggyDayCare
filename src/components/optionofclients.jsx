@@ -57,7 +57,7 @@ export const ClientsPerPage = ({perPageOption,onPerPageOptionChange}) =>{
   
   return (
     <div className="collection-sort">
-      <div><label>Show per page:</label>  </div>  
+      <div><label>Show:</label>  </div>  
       <select value={perPageOption} onChange = {handleSelectedChange}> 
         {Object.values(CLIENTS_PER_PAGE_OPTION).map( op => <option key={op} value={op}>{op}</option> )};
       </select> 
@@ -72,9 +72,8 @@ export  const SearchField = ({isDisabled,onValueToMatchChange}) =>{
   },[onValueToMatchChange])
 
   return(
-    <div className="collection-sort"> 
-      <div><label>Search for:</label>  </div>
-      <input className="search" placeholder={isDisabled ? "" : "search"} type="text" onChange={handleInputChange} disabled={isDisabled}></input>
+    <div className="collection-search"> 
+      <input className="search" placeholder={isDisabled ? "" : "search by filter"} type="text" onChange={handleInputChange} disabled={isDisabled}></input>
     </div>
   );
 }

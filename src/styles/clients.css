@@ -1,8 +1,8 @@
 .container-body-clients{
     height: 100vh;
     width: 100vw;
-    align-items:baseline;
-    text-align: 'center';
+   
+  
 }
 
 .container-body-clients h1{
@@ -23,21 +23,25 @@
 }
 
 .container-sort {
-    padding: 10px;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     flex: 1 1 0px;
-    width: 0;
+    width: 90%;
 }
 
 .collection-sort{
-   padding: 10px;
-   flex: 1 1 0px;
-   width: 0;
-   font-size: inherit;
-   flex-direction: column;
+   padding: 20px;
+ 
 }
+
+.collection-search{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+ }
 
 .collection-sort label{
     white-space: nowrap;
@@ -48,29 +52,30 @@
 }
 
 select{
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 6px;
     border: 2px solid #666666;
-    width:0px;
-    font-size: 20px;
+    width:120px;
+    font-size: 30px;
 }
 
 .search {
     border: 1px solid grey;
-    border-radius: 5px;
+    border-radius: 20px;
     outline: 0;
     background-color: #f5f5f5;
-    font-size: 20px;
-    width:0%;
+    font-size: 30px;
+    width:100%;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
 }
 
 .search:disabled{
     opacity: 0.8;
 }
-
 
 .section-clients {
     display: flex;
@@ -139,16 +144,7 @@ select{
     appearance: none;
     background-color: inherit;
 }
-
-.pagination {
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content:flex-start;
-    padding-bottom: 20px;
- }
-  
+ 
 .pagination a {
     color: white;
     float: left;
@@ -157,14 +153,11 @@ select{
     border: 1px solid #ddd;
 }
 
+
 .pagination a.active {
     background-color: #ffffff;
     color: black;
     border: 1px solid #ddd;
-}
-
-.pagination a:hover:not(.active) {
-    background-color: #ddd;
 }
 
 .pagination a:first-child {
@@ -183,5 +176,4 @@ select{
     align-items: flex-start;
     padding-left: 20px;
   
-   
 }

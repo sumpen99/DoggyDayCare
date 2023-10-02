@@ -35,21 +35,13 @@
     border-radius: 25px;
   }
   
-  /*.menu-bar a:hover {
-    color: black;
-  }
-  .menu-bar a:hover::before {
-    background: linear-gradient(to bottom, #e8edec, #d2d1d3);
-    box-shadow: 0px 3px 20px 0px black;
-    transform: scale(1.2);
-  }*/
-  
   .menu-bar .icon {
     display: none;
   }
   
   @media screen and (max-width: 600px) {
-    .menu-bar a:not(:first-child) {display: none;}
+    .menu-bar a {display: none;}
+    /*.menu-bar a:not(:first-child) {display: none;}*/
     .menu-bar a.icon {
       float: right;
       display: block;
