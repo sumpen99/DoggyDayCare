@@ -74,7 +74,7 @@ function App() {
   return (
     <div className="App">
     <LoaderProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/DoggyDayCare">
       {!hiddenMenu && <NavBar />}
         <LocationProvider>
           <RoutesWithAnimationAndRoutClients setHiddenMenu={setHiddenMenu}></RoutesWithAnimationAndRoutClients>
