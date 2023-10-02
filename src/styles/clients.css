@@ -82,8 +82,9 @@ select{
     flex: 1 16%;
     border: 1px solid #666666;
     border-radius: 10px;
-    max-width: 40vw;
-    min-width: 130px;
+    width: 130px;
+    /*max-width: 40vw;
+    min-width: 130px;/*
 }
 
 .client-image{
