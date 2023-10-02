@@ -76,10 +76,10 @@ const ClientsSheet = () => {
       <ClientSheet sheetOption={sheetOption}/>
       <div className="container-body-clients">
         <div className="container-sort">
-            <ClientsPerPage perPageOption={perPageOption} onPerPageOptionChange={setPerPageOption}></ClientsPerPage>
-            <FilterField filterOption={filterOption} onFilterOptionChange={setFilterOption}></FilterField>
-            <SearchField isDisabled={isDisabled(filterOption)} onValueToMatchChange={setValueToMatch}></SearchField>
+          <ClientsPerPage perPageOption={perPageOption} onPerPageOptionChange={setPerPageOption}></ClientsPerPage>
+          <FilterField filterOption={filterOption} onFilterOptionChange={setFilterOption}></FilterField>
         </div>
+          <SearchField isDisabled={isDisabled(filterOption)} onValueToMatchChange={setValueToMatch}></SearchField>
         <div className="container-pages">
           <ItemsShownedLabel currentPage= {currentPage} totalClients={clientCount.totalClients} perPageOption={perPageOption}></ItemsShownedLabel>
           <Pagination currentPage={currentPage} totalPages={clientCount.totalPages} onCurrentPageChange={setCurrentPage}></Pagination>
