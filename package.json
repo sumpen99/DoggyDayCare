@@ -2,7 +2,7 @@
   "name": "doggydaycare",
   "private": true,
   "version": "0.0.0",
-  "homepage":"https://sumpen99.github.io/DoggyDayCare",
+  "homepage":"https://sumpen99.github.io/DoggyDayCare/",
   "type": "module",
   "scripts": {
     "predeploy":"npm run build",
