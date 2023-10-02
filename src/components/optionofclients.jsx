@@ -27,12 +27,13 @@ export const Pagination = ({currentPage,totalPages,onCurrentPageChange}) => {
       { Array(totalPages).fill(null).map((value,index) => ( 
         <a key={index} value={index} href="#" className={(currentPage == index) ? "active" : "notActive"} onMouseDown={handleSelectedChange}>{index+1}</a>)) 
       }
-      <a href="#" onMouseDown={handleSelectedIncreaseChange}>&gt;</a>
+      <a href="#" onMouseDown={handleSelectedIncreaseChange}>&raquo;</a>
     </div>
   )
 }
 
 //raquo
+//&gt
 export const FilterField = ({filterOption,onFilterOptionChange}) =>{
   const handleSelectedChange = useCallback(event => {
     onFilterOptionChange(event.target.value);

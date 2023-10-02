@@ -1,6 +1,6 @@
 import { CoorTransition } from "../components/transition";
 import '../styles/home.css';
-import { routeTransitionSpring,routeTransitionEase,routeTransitionBlackBox,routeTransitionOpacity } from "../helper/transitiontypes";
+import { routeTransitionOpacity } from "../helper/transitiontypes";
 
 
 
@@ -8,11 +8,8 @@ const Home = () => {
 
   const body = () =>{
     return(
-      <div 
-        className="container-img"> 
-        <img 
-          src="./src/assets/dogs.png">
-        </img> 
+      <div className="container-img"> 
+        <img src= {require("./src/assets/dogs.png")}> </img> 
       </div>
     )
   }
