@@ -34,14 +34,15 @@
     transition: 0.2s;
     border-radius: 25px;
   }
-  .menu-bar a:hover {
+  
+  /*.menu-bar a:hover {
     color: black;
   }
   .menu-bar a:hover::before {
     background: linear-gradient(to bottom, #e8edec, #d2d1d3);
     box-shadow: 0px 3px 20px 0px black;
     transform: scale(1.2);
-  }
+  }*/
   
   .menu-bar .icon {
     display: none;
