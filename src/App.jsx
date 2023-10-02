@@ -39,7 +39,6 @@ function RoutesWithAnimationAndRoutClients({setHiddenMenu}) {
 
 function RoutesWithAnimationAndSheetClients() {
   const location = useLocation();
-  console.log(location);
   return (
     <Routes location={location} key="default">
       <Route path="/DoggyDayCare/" element={<Home />} />
