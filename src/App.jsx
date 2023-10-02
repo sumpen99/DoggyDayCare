@@ -39,7 +39,7 @@ function RoutesWithAnimationAndRoutClients({setHiddenMenu}) {
 
 function RoutesWithAnimationAndSheetClients() {
   const location = useLocation();
-  
+  console.log(location);
   return (
     <Routes location={location} key="default">
       <Route path="/" element={<Home />} />
@@ -59,7 +59,7 @@ function App() {
     return (
       <div className="App">
       <LoaderProvider>
-        <BrowserRouter>
+        <BrowserRouter basename="">
         <NavBar/>
           <LocationProvider>
             <RoutesWithAnimationAndSheetClients/>
