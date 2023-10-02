@@ -66,14 +66,23 @@ export const ClientsPerPage = ({perPageOption,onPerPageOptionChange}) =>{
   )
 }
   
-export  const SearchField = ({isDisabled,onValueToMatchChange}) =>{
+export  const SearchField = ({filterOption,onValueToMatchChange}) =>{
   const handleInputChange = useCallback(event => {
     onValueToMatchChange(event.target.value);
   },[onValueToMatchChange])
 
+  function disabledSearchField(filterOption){
+    return  filterOption === FILTER_OPTION.ALL     ||
+            filterOption === FILTER_OPTION.ABSENT  ||
+            filterOption === FILTER_OPTION.PRESENT ||
+            filterOption === FILTER_OPTION.MALE    ||
+            filterOption === FILTER_OPTION.FEMALE;
+  }
+
+  const isDisabled = disabledSearchField(filterOption);
   return(
     <div className="collection-search"> 
-      <input className="search" placeholder={isDisabled ? "" : "search by filter"} type="text" onChange={handleInputChange} disabled={isDisabled}></input>
+      <input className="search" placeholder={isDisabled ? `Showing ${filterOption}` : `Search in ${filterOption}`} type="text" onChange={handleInputChange} disabled={isDisabled}></input>
     </div>
   );
 }
@@ -90,3 +99,5 @@ function calculateNewlabel(currentPage,totalClients,perPageOption){
   const endItem = Math.min(totalClients,startItem + perPageOption - 1)
   return `Show ${startItem} - ${endItem} of ${totalClients} clients`;
 }
+
+

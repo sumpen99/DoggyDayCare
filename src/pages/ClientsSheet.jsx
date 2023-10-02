@@ -17,13 +17,7 @@ function useMergeState(initialState) {
   return [state, setMergedState];
 }
 
-function isDisabled(filterOption){
-  return  filterOption === FILTER_OPTION.ALL     ||
-          filterOption === FILTER_OPTION.ABSENT  ||
-          filterOption === FILTER_OPTION.PRESENT ||
-          filterOption === FILTER_OPTION.MALE    ||
-          filterOption === FILTER_OPTION.FEMALE;
-}
+
 
 const ClientsSheet = () => {
   const [sheetIsOpen] = useState(false);
@@ -79,7 +73,7 @@ const ClientsSheet = () => {
           <ClientsPerPage perPageOption={perPageOption} onPerPageOptionChange={setPerPageOption}></ClientsPerPage>
           <FilterField filterOption={filterOption} onFilterOptionChange={setFilterOption}></FilterField>
         </div>
-          <SearchField isDisabled={isDisabled(filterOption)} onValueToMatchChange={setValueToMatch}></SearchField>
+          <SearchField filterOption={filterOption} onValueToMatchChange={setValueToMatch}></SearchField>
         <div className="container-pages">
           <ItemsShownedLabel currentPage= {currentPage} totalClients={clientCount.totalClients} perPageOption={perPageOption}></ItemsShownedLabel>
           <Pagination currentPage={currentPage} totalPages={clientCount.totalPages} onCurrentPageChange={setCurrentPage}></Pagination>

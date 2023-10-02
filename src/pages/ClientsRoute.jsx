@@ -65,7 +65,7 @@ const ClientsRoute = () => {
             <ClientsPerPage perPageOption={perPageOption} onPerPageOptionChange={setPerPageOption}></ClientsPerPage>
             <FilterField filterOption={filterOption} onFilterOptionChange={setFilterOption}></FilterField>
         </div>
-        <SearchField isDisabled={isDisabled(filterOption)} onValueToMatchChange={setValueToMatch}></SearchField>
+        <SearchField filterOption={filterOption} onValueToMatchChange={setValueToMatch}></SearchField>
       <div className="container-pages">
         <ItemsShownedLabel currentPage= {currentPage} totalClients={clientCount.totalClients} perPageOption={perPageOption}></ItemsShownedLabel>
         <Pagination currentPage={currentPage} totalPages={clientCount.totalPages} onCurrentPageChange={setCurrentPage}></Pagination>
