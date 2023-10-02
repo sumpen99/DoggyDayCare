@@ -26,12 +26,12 @@ function RoutesWithAnimationAndRoutClients({setHiddenMenu}) {
 
   return (
     <Routes location={location} key="default">
-      <Route path="/" element={<Home />} />
-      <Route path="/clients" >
+      <Route path="/DoggyDayCare/" element={<Home />} />
+      <Route path="/DoggyDayCare/clients" >
         <Route index={true} element={<ClientsRoute />} />
         <Route path=":clientId" element={<InfoPageRoute />} />
       </Route>
-      <Route path="/contact" element={<Contact />} />
+      <Route path="/DoggyDayCare/contact" element={<Contact />} />
       <Route path="*" element={<Error />} />
     </Routes>
   );
@@ -42,9 +42,9 @@ function RoutesWithAnimationAndSheetClients() {
   console.log(location);
   return (
     <Routes location={location} key="default">
-      <Route path="/" element={<Home />} />
-      <Route path="/clients" element={<ClientsSheet />} />
-      <Route path="/contact" element={<Contact />} />
+      <Route path="/DoggyDayCare/" element={<Home />} />
+      <Route path="/DoggyDayCare/clients" element={<ClientsSheet />} />
+      <Route path="/DoggyDayCare/contact" element={<Contact />} />
       <Route path="*" element={<Error />} />
     </Routes>
   );
