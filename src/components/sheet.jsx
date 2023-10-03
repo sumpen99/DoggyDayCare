@@ -38,7 +38,6 @@ export const ClientSheet = ({sheetOption}) =>{
   return(
     <CustomSheet isOpen={isOpen} onClose={handleAction}>
       <Sheet.Container>
-        <Sheet.Header></Sheet.Header>
         <Sheet.Content>{<InfoPageSheet client={sheetOption.currentClient} closeSheet={handleAction}></InfoPageSheet>}</Sheet.Content>
       </Sheet.Container>
       <Sheet.Backdrop />

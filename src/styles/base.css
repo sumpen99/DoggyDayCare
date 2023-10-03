@@ -11,7 +11,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
-    min-width: 250px;
+   
   }
 
   body {
@@ -26,6 +26,12 @@
     max-width: 100%;
     overflow-x: hidden;
     height: 100%;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  body::-webkit-scrollbar{
+    display:none;
   }
 
  /* .ReactModalPortal .ReactModal__Overlay.ReactModal__Overlay--after-open {

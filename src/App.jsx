@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route,useLocation,HashRouter } from "react-router-dom";
+import { Routes, Route,useLocation,HashRouter } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { LoaderProvider } from "./helper/gloaballoading";
 import NavBar from "./navigation/NavBar";

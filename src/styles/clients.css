@@ -1,6 +1,7 @@
 .container-body-clients{
     height: 100vh;
     width: 100vw;
+   
 }
 
 .container-body-clients h1{
@@ -67,13 +68,12 @@ select{
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
-    justify-content: center;
+    column-gap: 10px;
 }
  
 .client-card {
-    padding: 20px;
     flex-grow: 1;
-    margin: 10px;
+    margin: 5px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -81,39 +81,31 @@ select{
     flex: 1 16%;
     border: 1px solid #666666;
     border-radius: 10px;
-    width: 130px;
-    /*max-width: 40vw;
-    min-width: 130px;*/
+    max-width: 130px;
+    min-height: 350px;
 }
 
 .client-image{
-    height: auto;
-    border: 2px solid white;
+    border: 2px solid #666666;
     border-radius: 50%;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
+    margin: 0 10px 0 10px;
 }
 
 .client-image img {
-    max-width: 100%;
-    /*max-height: auto;
-    max-width: 100%;
-    object-fit:fill;*/
+    width: 130px;
+    height: 130px;
 }
  
 .client-breed-user-name{
     cursor: pointer;
     margin-top: 10px;
-    border: 1px solid white;
+    border: 1px solid #666666;
     border-radius: 10px;
-    background-color: rgb(233, 230, 227);
     overflow-wrap: break-word;
-    color: #666666;
+    color: #ffff;
     box-shadow:inset 0px 0px 0px 2px rgb(24, 24, 24);
+    font-size: small;
 }
 
 .client-info {

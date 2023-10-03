@@ -15,7 +15,7 @@ const NavBar = () => {
         <NavLink to="/" data-page="home" onClick={handleToggleMenu}>Home</NavLink>
         <NavLink to="/Clients" data-page="clients" onClick={handleToggleMenu}>Clients</NavLink>
         <NavLink to="/Contact" data-page="contact" onClick={handleToggleMenu}>Contact</NavLink>
-        <a href="#" className="icon" onClick={handleToggleMenu}> <i className="fa fa-bars"></i> </a>
+        <a className="icon" onClick={handleToggleMenu}> <i className="fa fa-bars"></i> </a>
     </div>
   )
 };

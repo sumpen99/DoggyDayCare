@@ -6,6 +6,7 @@ import { BackButton } from '../components/backbutton';
 import { routeTransitionSpringFromBottom } from "../helper/transitiontypes";
 import { useNavigate } from "react-router-dom";
 
+// ROUTE
 export const InfoPageRoute = () => {
   const location = useLocation();
   const client = location.state.client;

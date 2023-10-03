@@ -36,7 +36,7 @@ const ClientCardSheet = ({client,setSheetOption}) =>{
     return(
         <div className="client-card">
             <div className="client-dog-name">
-                <h1>{client.name}</h1>
+                <h4 >{client.name}</h4>
             </div>
             <div className="client-image"> 
                 <AsyncImage src={client.img} ></AsyncImage>
