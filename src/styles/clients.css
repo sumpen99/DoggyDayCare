@@ -103,10 +103,10 @@ select{
 }
  
 .client-breed-user-name{
-    background-image: url("../assets/dogpawn.png");
-    background-size: 75% 75%;
+    background-image: url("../assets/dogpawngrey.png");
+    background-size: 25% 25%;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: bottom left;
     cursor: pointer;
     margin-top: 10px;
     overflow-wrap: break-word;
@@ -114,9 +114,9 @@ select{
     font-size: small;
     border:2px outset #999;
     border-radius: 5px;
-    -webkit-box-shadow: 5px 5px 10px rgba(0,0,0,0.9);
-    -moz-box-shadow: 5px 5px 10px rgba(0,0,0,0.9);
-    box-shadow: 5px 5px 10px rgba(0,0,0,0.9);
+    -webkit-box-shadow: 10px 5px 5px rgba(0,0,0,0.9);
+    -moz-box-shadow: 10px 5px 5px rgba(0,0,0,0.9);
+    box-shadow: 10x 5px 5px rgba(0,0,0,0.9);
 }
 
 .client-info {
@@ -140,6 +140,7 @@ select{
     padding: 8px 16px;
     text-decoration: none;
     border: 1px solid #ddd;
+    cursor: pointer;
 }
 
 

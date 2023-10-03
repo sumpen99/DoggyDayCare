@@ -6,28 +6,28 @@ import { CLIENTS_PER_PAGE_OPTION } from '../helper/core';
 export const Pagination = ({currentPage,totalPages,onCurrentPageChange}) => {
 
   const handleSelectedChange = useCallback(event => {
-    const index = event.target.getAttribute("value");
+    const index = parseInt(event.target.getAttribute("value"));
     onCurrentPageChange(index);
-  },[onCurrentPageChange])
+  },[currentPage,totalPages])
 
   const handleSelectedDecreaseChange = useCallback(event => {
     let newPage = currentPage-1;
     onCurrentPageChange(newPage < 0 ? 0 : newPage);
-  })
+  },[currentPage,totalPages])
 
   const handleSelectedIncreaseChange = useCallback(event => {
-    console.log(totalPages)
+    console.log(currentPage)
     let newPage = currentPage+1;
     onCurrentPageChange(newPage > (totalPages-1) ? (totalPages-1) : newPage);
-  })
+  },[currentPage,totalPages])
 
   return(
     <div className="pagination">
-      <a href="#" onMouseDown={handleSelectedDecreaseChange}>&laquo;</a>
+      <a onMouseDown={handleSelectedDecreaseChange}>&laquo;</a>
       { Array(totalPages).fill(null).map((value,index) => ( 
-        <a key={index} value={index} href="#" className={(currentPage == index) ? "active" : "notActive"} onMouseDown={handleSelectedChange}>{index+1}</a>)) 
+        <a key={index} value={index} className={(currentPage == index) ? "active" : "notActive"} onMouseDown={handleSelectedChange}>{index+1}</a>)) 
       }
-      <a href="#" onMouseDown={handleSelectedIncreaseChange}>&raquo;</a>
+      <a onMouseDown={handleSelectedIncreaseChange}>&raquo;</a>
     </div>
   )
 }

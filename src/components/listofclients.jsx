@@ -43,7 +43,7 @@ const ClientCardSheet = ({client,setSheetOption}) =>{
             </div>
             <div className="client-breed-user-name" onMouseDown={handleOnClick}>
                 <h5>{capitalizeFirstLetter(client.breed)}</h5>
-                <h5>{client.owner.name}</h5>
+                <h5>Age: {client.age}</h5>
             </div>
         </div>
     );
