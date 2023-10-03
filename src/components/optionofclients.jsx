@@ -16,7 +16,6 @@ export const Pagination = ({currentPage,totalPages,onCurrentPageChange}) => {
   },[currentPage,totalPages])
 
   const handleSelectedIncreaseChange = useCallback(event => {
-    console.log(currentPage)
     let newPage = currentPage+1;
     onCurrentPageChange(newPage > (totalPages-1) ? (totalPages-1) : newPage);
   },[currentPage,totalPages])
