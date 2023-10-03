@@ -119,7 +119,7 @@ select{
     color: #c4c4c4;
     font-size: small;
     border:2px outset #999;
-    border-radius: 5px;
+    border-radius: 2px;
 }
 
 .client-info {
