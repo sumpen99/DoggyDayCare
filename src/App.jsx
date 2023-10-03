@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route,useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route,useLocation,HashRouter } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { LoaderProvider } from "./helper/gloaballoading";
 import NavBar from "./navigation/NavBar";
@@ -26,12 +26,12 @@ function RoutesWithAnimationAndRoutClients({setHiddenMenu}) {
 
   return (
     <Routes location={location} key="default">
-      <Route path="/DoggyDayCare/" element={<Home />} />
-      <Route path="/DoggyDayCare/clients" >
+      <Route path="/" element={<Home />} />
+      <Route path="/clients" >
         <Route index={true} element={<ClientsRoute />} />
         <Route path=":clientId" element={<InfoPageRoute />} />
       </Route>
-      <Route path="/DoggyDayCare/contact" element={<Contact />} />
+      <Route path="/contact" element={<Contact />} />
       <Route path="*" element={<Error />} />
     </Routes>
   );
@@ -41,9 +41,9 @@ function RoutesWithAnimationAndSheetClients() {
   const location = useLocation();
   return (
     <Routes location={location} key="default">
-      <Route path="/DoggyDayCare/" element={<Home />} />
-      <Route path="/DoggyDayCare/clients" element={<ClientsSheet />} />
-      <Route path="/DoggyDayCare/contact" element={<Contact />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/clients" element={<ClientsSheet />} />
+      <Route path="/contact" element={<Contact />} />
       <Route path="*" element={<Error />} />
     </Routes>
   );
@@ -58,12 +58,12 @@ function App() {
     return (
       <div className="App">
       <LoaderProvider>
-        <BrowserRouter basename="">
+        <HashRouter >
         <NavBar/>
           <LocationProvider>
             <RoutesWithAnimationAndSheetClients/>
           </LocationProvider>
-        </BrowserRouter>
+        </HashRouter>
       </LoaderProvider>
       </div>
     );
@@ -73,12 +73,12 @@ function App() {
   return (
     <div className="App">
     <LoaderProvider>
-      <BrowserRouter basename="/DoggyDayCare">
+      <HashRouter>
       {!hiddenMenu && <NavBar />}
         <LocationProvider>
           <RoutesWithAnimationAndRoutClients setHiddenMenu={setHiddenMenu}></RoutesWithAnimationAndRoutClients>
         </LocationProvider>
-      </BrowserRouter>
+      </HashRouter>
     </LoaderProvider>
     </div>
   );
