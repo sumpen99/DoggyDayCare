@@ -18,7 +18,7 @@ export const InfoPageRoute = () => {
   const body = () =>{
     return(
       <div className="client-info-body" >
-        <BackButton icon= {String.fromCharCode(0xab)} title=" Clients" label={client.name} onCloseAction={handleNavigateBack}/>
+        <BackButton icon= {String.fromCharCode(0x24E7)} title="" label={client.name} onCloseAction={handleNavigateBack}/>
         <div className="client-info-content" >
           <div className="client-image-rounded"> <AsyncImage src={client.img}></AsyncImage> </div>
         </div>
@@ -37,7 +37,7 @@ export const InfoPageSheet = ({client,closeSheet}) => {
   const body = () =>{
     return(
       <div className="client-info-body" >
-        <BackButton icon= {String.fromCharCode(0xab)} title=" Clients" label={client.name} onCloseAction={closeSheet}/>
+        <BackButton icon= {String.fromCharCode(0x24E7)} title="" label={client.name} onCloseAction={closeSheet}/>
         <div className="client-info-content" >
           <div className="client-image-rounded"> <AsyncImage src={client.img}></AsyncImage> </div>
         </div>

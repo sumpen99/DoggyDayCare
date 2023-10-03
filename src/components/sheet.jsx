@@ -7,17 +7,16 @@ const CustomSheet = styled(Sheet)`
     
   }
   .react-modal-sheet-container {
-    /* custom styles */
+    background-color: #242424 !important;
   }
   .react-modal-sheet-header {
-    /*background-color: #000000 !important;
-    opacity:0.4 !important;*/
+    background-color: #242424 !important;
   }
   .react-modal-sheet-drag-indicator {
     /*background-color: #ffff !important;*/
   }
   .react-modal-sheet-content {
-    /* custom styles */
+    /*background-color: #242424 !important;*/
   }
 `;
 
@@ -39,6 +38,7 @@ export const ClientSheet = ({sheetOption}) =>{
   return(
     <CustomSheet isOpen={isOpen} onClose={handleAction}>
       <Sheet.Container>
+        <Sheet.Header></Sheet.Header>
         <Sheet.Content>{<InfoPageSheet client={sheetOption.currentClient} closeSheet={handleAction}></InfoPageSheet>}</Sheet.Content>
       </Sheet.Container>
       <Sheet.Backdrop />
