@@ -54,30 +54,25 @@ function RoutesWithAnimationAndSheetClients() {
 const SheetCardApp = () =>{
 
   return(
-    <LoaderProvider>
-      <HashRouter >
+    <HashRouter >
       <NavBar/>
-        <LocationProvider>
-          <RoutesWithAnimationAndSheetClients/>
-        </LocationProvider>
-      </HashRouter>
-    </LoaderProvider>
+      <LocationProvider>
+        <RoutesWithAnimationAndSheetClients/>
+      </LocationProvider>
+    </HashRouter>
   )
 }
 
 const RouteCardApp = () =>{
   const context = useContext(AppContext);
-  const [hiddenMenu,setHiddenMenu] = useState(false);
-
+ 
   return(
-    <LoaderProvider>
-        <HashRouter>
-        {!context.hiddenMenu && <NavBar/>}
-          <LocationProvider>
-            <RoutesWithAnimationAndRoutClients ></RoutesWithAnimationAndRoutClients>
-          </LocationProvider>
-        </HashRouter>
-    </LoaderProvider>
+    <HashRouter>
+      {!context.hiddenMenu && <NavBar/>}
+      <LocationProvider>
+        <RoutesWithAnimationAndRoutClients ></RoutesWithAnimationAndRoutClients>
+      </LocationProvider>
+    </HashRouter>
   )
 }
 
@@ -98,7 +93,9 @@ function App() {
 
   return (
     <AppContext.Provider value={{clientCard,setClientCard,reloadData,setReloadData,hiddenMenu,setHiddenMenu}}>
-      <BaseCardApp/>
+      <LoaderProvider>
+        <BaseCardApp/>
+      </LoaderProvider>
     </AppContext.Provider>
     
   );
