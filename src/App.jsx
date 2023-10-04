@@ -8,9 +8,9 @@ import ClientsRoute from "./pages/ClientsRoute";
 import Contact from "./pages/Contact";
 import {InfoPageRoute} from "./pages/Info";
 import Error from "./pages/Error";
-import { useState,useEffect} from "react";
+import { useState,useEffect,useContext} from "react";
+import { AppContext,CLIENT_CARD_OPTION } from "./components/AppContext";
 
-const LOAD_SHEET = true;
 const str = "/Clients/";
 const rgx = new RegExp(str);
 
@@ -18,10 +18,11 @@ function LocationProvider({ children }) {
   return <AnimatePresence >{children}</AnimatePresence>;
 }
 
-function RoutesWithAnimationAndRoutClients({setHiddenMenu}) {
+function RoutesWithAnimationAndRoutClients() {
   const location = useLocation();
+  const context = useContext(AppContext);
   useEffect(() => {
-    setHiddenMenu(rgx.test(location.pathname)); 
+    context.setHiddenMenu(rgx.test(location.pathname)); 
   },[location])
 
   return (
@@ -50,38 +51,56 @@ function RoutesWithAnimationAndSheetClients() {
  
 }
 
-function App() {
-  const [hiddenMenu,setHiddenMenu] = useState(false);
+const SheetCardApp = () =>{
 
-  // SHEET WAY
-  if(LOAD_SHEET){
-    return (
-      <div className="App">
-      <LoaderProvider>
-        <HashRouter >
-        <NavBar/>
-          <LocationProvider>
-            <RoutesWithAnimationAndSheetClients/>
-          </LocationProvider>
-        </HashRouter>
-      </LoaderProvider>
-      </div>
-    );
-  }
-
-  // ROUTE WAY
-  return (
-    <div className="App">
+  return(
     <LoaderProvider>
-      <HashRouter>
-      {!hiddenMenu && <NavBar />}
+      <HashRouter >
+      <NavBar/>
         <LocationProvider>
-          <RoutesWithAnimationAndRoutClients setHiddenMenu={setHiddenMenu}></RoutesWithAnimationAndRoutClients>
+          <RoutesWithAnimationAndSheetClients/>
         </LocationProvider>
       </HashRouter>
     </LoaderProvider>
-    </div>
-  );
+  )
 }
 
+const RouteCardApp = () =>{
+  const context = useContext(AppContext);
+  const [hiddenMenu,setHiddenMenu] = useState(false);
+
+  return(
+    <LoaderProvider>
+        <HashRouter>
+        {!context.hiddenMenu && <NavBar/>}
+          <LocationProvider>
+            <RoutesWithAnimationAndRoutClients ></RoutesWithAnimationAndRoutClients>
+          </LocationProvider>
+        </HashRouter>
+    </LoaderProvider>
+  )
+}
+
+const BaseCardApp = () =>{
+  const appContext = useContext(AppContext);
+  return (
+    <div className="App">
+      {appContext.clientCard === CLIENT_CARD_OPTION.ROUTE ? (<RouteCardApp/>) : (<SheetCardApp/>)}
+    </div>
+  )
+
+}
+
+function App() {
+  const [clientCard, setClientCard] = useState(CLIENT_CARD_OPTION.ROUTE);
+  const [reloadData, setReloadData] = useState(true);
+  const [hiddenMenu,setHiddenMenu] = useState(false);
+
+  return (
+    <AppContext.Provider value={{clientCard,setClientCard,reloadData,setReloadData,hiddenMenu,setHiddenMenu}}>
+      <BaseCardApp/>
+    </AppContext.Provider>
+    
+  );
+}
 export default App

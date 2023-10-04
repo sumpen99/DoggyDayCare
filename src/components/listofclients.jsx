@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback} from 'react';
 import { useLoader } from '../helper/gloaballoading';
-import { Link } from "react-router-dom";
+import { Link,NavLink } from "react-router-dom";
 import AsyncImage from "../helper/asyncimage"
 import clientDataHandler from "../helper/clientDataHandler"
 import { capitalizeFirstLetter } from '../helper/core';
@@ -14,12 +14,12 @@ const ClientCardRoute = ({client}) =>{
             <div className="client-image"> 
                 <AsyncImage src={client.img}></AsyncImage> 
             </div>
-            <Link to={client.name} data-page="info" state={{ client: client }}>
+            <NavLink to={client.name} data-page="info" state={{ client: client }} style={{ textDecoration: 'none' }}>
                 <div className="client-breed-user-name">
                     <h5>{capitalizeFirstLetter(client.breed)}</h5>
                     <h5>{client.owner.name}</h5>
                 </div>
-            </Link>
+            </NavLink>
         </div>
     );
   }

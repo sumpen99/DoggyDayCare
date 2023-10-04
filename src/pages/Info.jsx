@@ -10,8 +10,8 @@ import { useNavigate } from "react-router-dom";
 export const InfoPageRoute = () => {
   const location = useLocation();
   const client = location.state.client;
-
   const navigate = useNavigate();
+ 
   const handleNavigateBack = event =>{
     navigate(-1);
   }

@@ -1,13 +1,14 @@
 import '../styles/clients.css';
 import { CoorTransition } from "../components/transition";
 import React, { useState, useEffect} from 'react';
-import { FILTER_OPTION,CLIENTS_PER_PAGE_OPTION } from "../helper/core"
+import { FILTER_OPTION,CLIENTS_PER_PAGE_OPTION} from "../helper/core"
 import {ClientsPerPage,FilterField,SearchField,Pagination,ItemsShownedLabel} from "../components/optionofclients"
 import {ListOfClientsRoute} from "../components/listofclients"
 import { routeTransitionOpacity  } from "../helper/transitiontypes";
 import { Outlet } from "react-router-dom";
 
 import { stringInterPolation } from '../helper/core';
+import { lastRequest } from '../helper/clientDataHandler';
 
 
 function useMergeState(initialState) {
@@ -18,22 +19,13 @@ function useMergeState(initialState) {
   return [state, setMergedState];
 }
 
-function isDisabled(filterOption){
-  return  filterOption === FILTER_OPTION.ALL     ||
-          filterOption === FILTER_OPTION.ABSENT  ||
-          filterOption === FILTER_OPTION.PRESENT ||
-          filterOption === FILTER_OPTION.MALE    ||
-          filterOption === FILTER_OPTION.FEMALE;
-}
-
-
 const ClientsRoute = () => {
-  const [filterOption,setFilterOption] = useState(FILTER_OPTION.ALL);
-  const [perPageOption,setPerPageOption] = useState(CLIENTS_PER_PAGE_OPTION.SIXTEEN);
-  const [valueToMatch,setValueToMatch] = useState("");
-  const [totalClients] = useState(0);
-  const [totalPages] = useState(0);
-  const [currentPage,setCurrentPage] = useState(0);
+  const [filterOption,setFilterOption] = useState(lastRequest.filterOption);
+  const [perPageOption,setPerPageOption] = useState(lastRequest.perPageOption);
+  const [valueToMatch,setValueToMatch] = useState(lastRequest.valueToMatch);
+  const [totalClients] = useState(lastRequest.totalClientsAvailable);
+  const [totalPages] = useState(lastRequest.totalPages);
+  const [currentPage,setCurrentPage] = useState(lastRequest.page);
 
   const [filterRequest, setFilterRequest] = useMergeState({
     filterOption: filterOption,
@@ -48,6 +40,7 @@ const ClientsRoute = () => {
   });
 
   useEffect(() => {
+    console.log(lastRequest.valueToMatch)
     setFilterRequest({
       filterOption: filterOption,
       valueToMatch: valueToMatch,

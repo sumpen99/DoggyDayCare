@@ -67,7 +67,6 @@ const ClientsSheet = () => {
   const bodySheet = () => {
     return (
       <>
-      <ClientSheet sheetOption={sheetOption}/>
       <div className="container-body-clients">
         <div className="container-sort">
           <ClientsPerPage perPageOption={perPageOption} onPerPageOptionChange={setPerPageOption}></ClientsPerPage>
@@ -82,6 +81,7 @@ const ClientsSheet = () => {
           <ListOfClientsSheet filterRequest={filterRequest} onClientCountChange={setClientCount} onResetPage={setCurrentPage} setSheetOption={setSheetOption}></ListOfClientsSheet>
         </div>
       </div>
+      <ClientSheet sheetOption={sheetOption}/>
       </>
     )
   }

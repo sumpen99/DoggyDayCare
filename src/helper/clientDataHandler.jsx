@@ -1,14 +1,15 @@
-import { FILTER_OPTION,stringInterPolation } from "./core";
+import { FILTER_OPTION,CLIENTS_PER_PAGE_OPTION,stringInterPolation } from "./core";
 let cache = null;
 const baseUrl = 'https://api.jsonbin.io/v3/b/650a7ebece39bb6dce7f5683';
 
-let lastRequest = { 
-  filterOption: null,
-  perPageOption:null,
-  valueToMatch: null,
-  page:null,
-  totalClientsAvailable:null,
-  filteredClients:null
+export let lastRequest = { 
+  filterOption: FILTER_OPTION.ALL,
+  perPageOption: CLIENTS_PER_PAGE_OPTION.SIXTEEN,
+  valueToMatch: "",
+  page:0,
+  totalClientsAvailable:0,
+  filteredClients:0,
+  initiated:null,
 };
 
 export default async function makeRequest(filterRequest,onClientCountChange,onResetPage) {
@@ -16,19 +17,19 @@ export default async function makeRequest(filterRequest,onClientCountChange,onRe
   const valueToMatch = filterRequest.valueToMatch;
   const perPageOption = filterRequest.perPageOption;
   let currentPage = filterRequest.currentPage;
-
+ 
   if(!cache) {
     const response = await fetch(baseUrl);
     const clientData = await response.json();
     cache = clientData.record;
   } 
 
-  if(notSameFilterAsLastOne(selectedFilter,valueToMatch,perPageOption)){
+  if(notSameFilterAsLastOne(selectedFilter,valueToMatch,perPageOption) || !lastRequest.initiated){
     const filteredClients = filterData(selectedFilter,valueToMatch);
     const clientsAvailable = filteredClients.length;
     currentPage = 0;
     onResetPage(0);
-    updateLastRequest(selectedFilter,perPageOption,valueToMatch,clientsAvailable,filteredClients);
+    updateLastRequest(selectedFilter,perPageOption,valueToMatch,clientsAvailable,filteredClients,true);
   }
 
   updateLastRequestWithPage(currentPage);
@@ -47,12 +48,13 @@ function notSameFilterAsLastOne(selectedFilter,valueToMatch,perPageOption){
           perPageOption !== lastRequest.perPageOption
 }
 
-function updateLastRequest(selectedFilter,perPageOption,valueToMatch,clientsAvailable,filteredClients){
+function updateLastRequest(selectedFilter,perPageOption,valueToMatch,clientsAvailable,filteredClients,initiated){
   lastRequest.filterOption = selectedFilter;
   lastRequest.perPageOption = perPageOption;
   lastRequest.valueToMatch = valueToMatch;
   lastRequest.totalClientsAvailable = clientsAvailable;
   lastRequest.filteredClients = (selectedFilter === FILTER_OPTION.ALL) ? null : filteredClients;
+  lastRequest.initiated = initiated;
 }
 
 function updateLastRequestWithPage(currentPage){
