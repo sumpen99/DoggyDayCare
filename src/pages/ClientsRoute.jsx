@@ -40,7 +40,6 @@ const ClientsRoute = () => {
   });
 
   useEffect(() => {
-    console.log(lastRequest.valueToMatch)
     setFilterRequest({
       filterOption: filterOption,
       valueToMatch: valueToMatch,

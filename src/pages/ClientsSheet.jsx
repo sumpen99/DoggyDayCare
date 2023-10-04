@@ -4,7 +4,7 @@ import React, { useState, useEffect} from 'react';
 import { FILTER_OPTION,CLIENTS_PER_PAGE_OPTION } from "../helper/core"
 import {ClientsPerPage,FilterField,SearchField,Pagination,ItemsShownedLabel} from "../components/optionofclients"
 import {ListOfClientsSheet} from "../components/listofclients"
-import { routeTransitionOpacity  } from "../helper/transitiontypes";
+import { routeTransitionOpacity,routeTransitionEase  } from "../helper/transitiontypes";
 import { ClientSheet } from '../components/sheet';
 import { stringInterPolation } from '../helper/core';
 
@@ -67,6 +67,7 @@ const ClientsSheet = () => {
   const bodySheet = () => {
     return (
       <>
+      <ClientSheet sheetOption={sheetOption} setSheetOption={setSheetOption}/>
       <div className="container-body-clients">
         <div className="container-sort">
           <ClientsPerPage perPageOption={perPageOption} onPerPageOptionChange={setPerPageOption}></ClientsPerPage>
@@ -81,13 +82,12 @@ const ClientsSheet = () => {
           <ListOfClientsSheet filterRequest={filterRequest} onClientCountChange={setClientCount} onResetPage={setCurrentPage} setSheetOption={setSheetOption}></ListOfClientsSheet>
         </div>
       </div>
-      <ClientSheet sheetOption={sheetOption}/>
       </>
     )
   }
 
   return (
-    <CoorTransition page={bodySheet}  name="home trans" transition={routeTransitionOpacity}/>
+    <CoorTransition page={bodySheet}  name="home trans" transition={routeTransitionEase}/>
   );
   };
   

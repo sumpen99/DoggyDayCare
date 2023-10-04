@@ -44,9 +44,8 @@ export const routeTransitionSpring = {
     final: {
         opacity: 1, scale: 1.0,
         transition: {
-            duration: 0.5,
-            delay: 0.3,
-            ease: [0.5, 0.71, 1, 1.5],
+            duration: 0.3,
+            ease: [0.3, 0.51, 0.75, 1.0],
         },
     },
   };
@@ -58,8 +57,8 @@ export const routeTransitionSpring = {
     final: {
       opacity: 1,
       transition: {
-        duration: 1.5,
-        ease: [0.5, 0.71, 1, 1.5],
+        duration: 0.7,
+        ease: [0.6, -0.05, 0.01, 0.99],
       },
     },
   };
@@ -80,13 +79,13 @@ export const routeTransitionSpring = {
     },
   };
 
-  const content = {
+  export const content = {
     animate: {
       transition: { staggerChildren: 0.1, delayChildren: 2.8 },
     },
   };
   
-  const title = {
+  export const title = {
     initial: { y: -20, opacity: 0 },
     animate: {
       y: 0,
@@ -98,7 +97,7 @@ export const routeTransitionSpring = {
     },
   };
   
-  const products = {
+  export const products = {
     initial: { y: -20, opacity: 0 },
     animate: {
       y: 0,
@@ -110,7 +109,7 @@ export const routeTransitionSpring = {
     },
   };
 
-  const text = {
+  export const text = {
     initial: {
       y: 40,
     },
@@ -123,7 +122,7 @@ export const routeTransitionSpring = {
     },
   };
 
-  const textContainer = {
+  export const textContainer = {
     initial: {
       opacity: 1,
     },

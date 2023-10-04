@@ -88,11 +88,10 @@ const BaseCardApp = () =>{
 
 function App() {
   const [clientCard, setClientCard] = useState(CLIENT_CARD_OPTION.ROUTE);
-  const [reloadData, setReloadData] = useState(true);
   const [hiddenMenu,setHiddenMenu] = useState(false);
 
   return (
-    <AppContext.Provider value={{clientCard,setClientCard,reloadData,setReloadData,hiddenMenu,setHiddenMenu}}>
+    <AppContext.Provider value={{clientCard,setClientCard,hiddenMenu,setHiddenMenu}}>
       <LoaderProvider>
         <BaseCardApp/>
       </LoaderProvider>

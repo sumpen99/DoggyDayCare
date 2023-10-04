@@ -1,6 +1,6 @@
 import "../styles/contact.css"
 import { CoorTransition } from "../components/transition";
-import { routeTransitionOpacity } from "../helper/transitiontypes";
+import { routeTransitionOpacity,routeTransitionEase } from "../helper/transitiontypes";
 
 const Contact = () => {
   
@@ -13,7 +13,7 @@ const Contact = () => {
   }
 
   return (
-    <CoorTransition page={body} name="home trans" transition={routeTransitionOpacity}/>
+    <CoorTransition page={body} name="home trans" transition={routeTransitionEase}/>
   );
 };
   
