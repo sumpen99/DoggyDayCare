@@ -22,11 +22,11 @@ export const Pagination = ({currentPage,totalPages,onCurrentPageChange}) => {
 
   return(
     <div className="pagination">
-      <a onMouseDown={handleSelectedDecreaseChange}>&laquo;</a>
+      {currentPage != 0 && <a onMouseDown={handleSelectedDecreaseChange}>&laquo;</a>}
       { Array(totalPages).fill(null).map((value,index) => ( 
         <a key={index} value={index} className={(currentPage == index) ? "active" : "notActive"} onMouseDown={handleSelectedChange}>{index+1}</a>)) 
       }
-      <a onMouseDown={handleSelectedIncreaseChange}>&raquo;</a>
+      {currentPage != totalPages-1 && <a onMouseDown={handleSelectedIncreaseChange}>&raquo;</a>}
     </div>
   )
 }
