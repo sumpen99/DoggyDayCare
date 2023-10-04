@@ -3,7 +3,7 @@ import "../styles/radioswitch.css";
 import { AppContext } from "./AppContext";
 import { CLIENT_CARD_OPTION } from "./AppContext";
 
-const labelText = `(Developer mode)`
+const labelText = `Developer mode`
 
 export const RadioSwitch = () =>{
     const context = useContext(AppContext);
