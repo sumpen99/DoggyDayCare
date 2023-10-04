@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState,useEffect} from 'react';
-const FALLBACK_URL = "../assets/notfound.png";
+import FALLBACK_URL from "../assets/notfound.png";
+//const FALLBACK_URL = "/src/assets/notfound.png";
 export default function AsyncImage({src}){
 
     const [loadedSrc, setLoadedSrc] = useState(null);
