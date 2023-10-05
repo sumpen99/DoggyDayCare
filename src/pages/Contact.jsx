@@ -4,6 +4,12 @@ import { routeTransitionOpacity,routeTransitionEase } from "../helper/transition
 import logo from "../assets/dogpawngrey.png";
 const Contact = () => {
   
+  const handleAction = event =>{
+    console.log(event.target);
+    alert('Submitted');
+    event.preventDefault();
+  }
+
   const body = () =>{
     return(
       <div className="container-body-contact">
@@ -15,7 +21,7 @@ const Contact = () => {
         <section className="contact-form">
           <div className="form-container">
               <h2>Your Details</h2>
-              <form action="#" method="POST">
+              <form  action="url of choice" method="POST" onSubmit={handleAction}>
   
                   <label type="name">Name: </label>
                   <input type="text" id="name" name="name" required/>
@@ -42,7 +48,8 @@ const Contact = () => {
             Sweden, Karlstad 652 28<br/>
             Phone: <a href="tel:0705598465">070-55 98 465</a><br/>
             Email: <a href="mailto:contact@doggydaycare.com">contact@doggydaycare.com</a>
-        </address>
+          </address>
+          <a href="https://www.google.com/maps/search/?api=1&query=59.3773681%2C13.4880617">View on map</a>
       </section>
   
     
@@ -60,3 +67,38 @@ const Contact = () => {
 };
   
 export default Contact;
+
+/*
+class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
+}
+
+
+*/

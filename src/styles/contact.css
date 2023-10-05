@@ -78,7 +78,7 @@
  
 .contact-info {
     text-align: center;
-    padding: 50px 0;
+    padding: 10px 0;
    
 }
  
@@ -87,19 +87,24 @@
 }
  
 footer {
-    padding: 20px;
+    padding: 10px;
     text-align: center;
   
     color: white;
 }
 
-a:link {
+.contact-info a {   
+    color:  rgb(184, 145, 113);  
+}
+
+.contact-info a:link {
     color: rgb(184, 145, 113);
     background-color: transparent;
     text-decoration: none;
  }
- a:visited {
-    color: #f2f2f2;
+
+.contact-info a:visited {
+    color:  rgb(184, 145, 113);
     background-color: transparent;
     text-decoration: none;
  }
