@@ -1,87 +1,23 @@
 .backbutton-body{
-  display: flex;
   border-bottom: 1px solid #aaa;
-  justify-content: center;
-}
+  display: flex;
+  flex-direction: row;
+ }
 
 .backbutton{
-  position: absolute;
-  left: 0;
   cursor: pointer;
   background-color: transparent;
   background-repeat: no-repeat;
   border: none;
-  color: #f2f2f2;
- 
-}
-
-.backbutton-icon{
   padding: 0px 0px 0px 10px;
   font-size: large;
-  display: flex;
-  align-items: baseline;
-  column-gap: 10px;
+  color: #f2f2f2;
 }
 
 .backbutton-label{
-  font-size: large;
-}
-
-
-
-
-
-/*
-
-
-.backbutton{
-    font-size: 20px;
-    margin-top: 25px;
-    margin-left: 25px;
-    background-color:#fff;
-    color: #fff;
-    border:none;
-    border-radius:10px;
-    box-shadow: 0px 0px 2px 2px rgb(75, 73, 73);
+  width: 50%;
+  display: flex;
+  justify-content: right;
+  text-align: right;
  
 }
-.backbutton {
-    display: inline-block;
-    border-radius: 4px;
-    background-color: #f4511e;
-    border: none;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 28px;
-    padding: 20px;
-    width: 200px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 5px;
-  }
-  
-  .backbutton span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-  }
-  
-  .backbutton span:after {
-    content: '\00ab';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    left: 20px;
-    transition: 0.5s;
-  }
-  
-  .backbutton:hover span {
-    padding-left: 25px;
-  }
-  
-  .backbutton:hover span:after {
-    opacity: 1;
-    left: 0;
-  }
-  */

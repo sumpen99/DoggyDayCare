@@ -14,12 +14,10 @@ const ClientCardRoute = ({client}) =>{
             <div className="client-image"> 
                 <AsyncImage src={client.img}></AsyncImage> 
             </div>
-            <div className="client-breed-user-name">
-                <NavLink className="client-link-route" to={client.name} data-page="info" state={{ client: client }} style={{ textDecoration: 'none' }}>
-                    <h5>{capitalizeFirstLetter(client.breed)}</h5>
-                    <h5>Age: {client.age}</h5>
-                </NavLink>
-            </div>
+            <NavLink className="client-link-route" to={client.name} data-page="info" state={{ client: client }} style={{ textDecoration: 'none' }}>
+                <h5>{capitalizeFirstLetter(client.breed)}</h5>
+                <h5>Age: {client.age}</h5>
+            </NavLink>
         </div>
     );
   }

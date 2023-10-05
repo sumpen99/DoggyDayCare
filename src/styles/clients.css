@@ -119,6 +119,20 @@ select{
 }
 
 .client-link-route{
+    background-image: url("../assets/dogpawngrey.png");
+    background-size: 25% 25%;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    cursor: pointer;
+    overflow-wrap: break-word;
+    color: #c4c4c4;
+    font-size: small;
+    border-top:2px outset #ffffff;
+    font-family: verdana;
+   
+}
+
+.client-link-route{
     color: #c4c4c4;
     font-size: small;
     font-family: verdana;
