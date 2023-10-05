@@ -20,13 +20,22 @@ export const Pagination = ({currentPage,totalPages,onCurrentPageChange}) => {
     onCurrentPageChange(newPage > (totalPages-1) ? (totalPages-1) : newPage);
   },[currentPage,totalPages])
 
+
+  function leadingAIsHidden(){
+    return (currentPage === 0) ? "hidden" : "visible";
+  }
+
+  function trailingAIsHidden(){
+    return (currentPage < totalPages-1) ? "visible" : "hidden";
+  }
+
   return(
     <div className="pagination">
-      {currentPage != 0 && <a onMouseDown={handleSelectedDecreaseChange}>&laquo;</a>}
+      {<a style={{visibility:leadingAIsHidden()}} onMouseDown={handleSelectedDecreaseChange}>&laquo;</a>}
       { Array(totalPages).fill(null).map((value,index) => ( 
         <a key={index} value={index} className={(currentPage == index) ? "active" : "notActive"} onMouseDown={handleSelectedChange}>{index+1}</a>)) 
       }
-      {currentPage < totalPages-1 && <a onMouseDown={handleSelectedIncreaseChange}>&raquo;</a>}
+      {<a style={{visibility:trailingAIsHidden()}} onMouseDown={handleSelectedIncreaseChange}>&raquo;</a>}
     </div>
   )
 }
