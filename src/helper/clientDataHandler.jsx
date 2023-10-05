@@ -1,6 +1,6 @@
 import { FILTER_OPTION,CLIENTS_PER_PAGE_OPTION,stringInterPolation } from "./core";
 let cache = null;
-const baseUrl = 'https://api.jsonbin.io/v3/b/650a7ebece39bb6dce7f5683';
+const baseUrl = 'https://api.jsonbin.io/v3/b/651e47600574da7622b492e4';
 
 export let lastRequest = { 
   filterOption: FILTER_OPTION.ALL,
@@ -21,7 +21,7 @@ export default async function makeRequest(filterRequest,onClientCountChange,onRe
   if(!cache) {
     const response = await fetch(baseUrl);
     const clientData = await response.json();
-    cache = clientData.record;
+    cache = clientData.record.clients;
   } 
 
   if(notSameFilterAsLastOne(selectedFilter,valueToMatch,perPageOption) || !lastRequest.initiated){

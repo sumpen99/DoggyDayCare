@@ -28,11 +28,13 @@
     height: 100%;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    white-space: pre-line;
   }
 
   body::-webkit-scrollbar{
     display:none;
   }
+
 
  /* .ReactModalPortal .ReactModal__Overlay.ReactModal__Overlay--after-open {
     background-color: unset !important;
