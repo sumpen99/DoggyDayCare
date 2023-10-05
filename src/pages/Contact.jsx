@@ -1,12 +1,14 @@
 import "../styles/contact.css"
 import { CoorTransition } from "../components/transition";
-import { routeTransitionOpacity,routeTransitionEase } from "../helper/transitiontypes";
+import { routeTransitionEase } from "../helper/transitiontypes";
 import logo from "../assets/dogpawngrey.png";
 const Contact = () => {
   
   const handleAction = event =>{
     console.log(event.target);
-    alert('Submitted');
+    /*alert('Submitted');
+    <form  action="url of choice" method="POST" onSubmit={handleAction}>
+    */
     event.preventDefault();
   }
 
@@ -21,7 +23,7 @@ const Contact = () => {
         <section className="contact-form">
           <div className="form-container">
               <h2>Your Details</h2>
-              <form  action="url of choice" method="POST" onSubmit={handleAction}>
+              <form onSubmit={handleAction}>
   
                   <label type="name">Name: </label>
                   <input type="text" id="name" name="name" required/>
@@ -67,38 +69,3 @@ const Contact = () => {
 };
   
 export default Contact;
-
-/*
-class NameForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    );
-  }
-}
-
-
-*/

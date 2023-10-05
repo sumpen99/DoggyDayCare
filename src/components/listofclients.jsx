@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback} from 'react';
 import { useLoader } from '../helper/gloaballoading';
-import { Link,NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import AsyncImage from "../helper/asyncimage"
 import clientDataHandler from "../helper/clientDataHandler"
-import { capitalizeFirstLetter } from '../helper/core';
+import logo_pawn from "../assets/dogpawngrey.png";
 
 const ClientCardRoute = ({client}) =>{
     return(
@@ -15,8 +15,7 @@ const ClientCardRoute = ({client}) =>{
                 <AsyncImage src={client.img}></AsyncImage> 
             </div>
             <NavLink className="client-link-route" to={client.name} data-page="info" state={{ client: client }} style={{ textDecoration: 'none' }}>
-                <h5>{capitalizeFirstLetter(client.breed)}</h5>
-                <h5>Age: {client.age}</h5>
+                <img className="client-logo-pawn" src={logo_pawn}></img>
             </NavLink>
         </div>
     );
@@ -40,8 +39,7 @@ const ClientCardSheet = ({client,setSheetOption}) =>{
                 <AsyncImage src={client.img} ></AsyncImage>
             </div>
             <div className="client-breed-user-name" onMouseDown={handleOnClick}>
-                <h5>{capitalizeFirstLetter(client.breed)}</h5>
-                <h5>Age: {client.age}</h5>
+                <img className="client-logo-pawn" src={logo_pawn}></img>
             </div>
         </div>
     );

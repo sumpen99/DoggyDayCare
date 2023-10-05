@@ -20,6 +20,10 @@ export const Pagination = ({currentPage,totalPages,onCurrentPageChange}) => {
     onCurrentPageChange(newPage > (totalPages-1) ? (totalPages-1) : newPage);
   },[currentPage,totalPages])
 
+  const handleSelectedIncreaseSkippedForwardChange = useCallback(event => {
+    let newPage = toIndex()+1;
+    onCurrentPageChange(newPage > (totalPages-1) ? (totalPages-1) : newPage);
+  },[currentPage,totalPages])
 
   function leadingAIsHidden(){
     return (currentPage === 0) ? "hidden" : "visible";
@@ -28,11 +32,30 @@ export const Pagination = ({currentPage,totalPages,onCurrentPageChange}) => {
   function trailingAIsHidden(){
     return (currentPage < totalPages-1) ? "visible" : "hidden";
   }
+  /*
+  TIMES UP.... CONTINUE TO SHOW MAX 3 AND ADD SKIP FORWARD <-> BACK
+  function leadingAIsHidden(){
+    return (currentPage === 0) ? "hidden" : "visible";
+  }
+
+  function trailingAIsHidden(){
+    return (currentPage < totalPages-1) ? "visible" : "hidden";
+  }
+
+  function toIndex(){
+    let idx =  Math.min(3,totalPages-1);
+    return idx > 0 ? idx : 0;
+  }
+  {<a key={toIndex()} value={toIndex()} onMouseDown={handleSelectedIncreaseSkippedForwardChange}>&hellip;</a>}
+  */
+  function toIndex(){
+    return Math.max(0,totalPages);
+  }
 
   return(
     <div className="pagination">
       {<a style={{visibility:leadingAIsHidden()}} onMouseDown={handleSelectedDecreaseChange}>&laquo;</a>}
-      { Array(totalPages).fill(null).map((value,index) => ( 
+      { toIndex() > 0 && Array(toIndex()).fill(null).map((value,index) => ( 
         <a key={index} value={index} className={(currentPage == index) ? "active" : "notActive"} onMouseDown={handleSelectedChange}>{index+1}</a>)) 
       }
       {<a style={{visibility:trailingAIsHidden()}} onMouseDown={handleSelectedIncreaseChange}>&raquo;</a>}

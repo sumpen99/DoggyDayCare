@@ -19,13 +19,6 @@ const Home = () => {
     <CoorTransition page={body} name="home trans" transition={routeTransitionEase}/>
   );
 
-  /*return (
-    <div className="container-img"> 
-        <img src={logo} alt=""/>
-        <RadioSwitch/>
-      </div>
-  );*/
- 
 };
   
 export default Home;

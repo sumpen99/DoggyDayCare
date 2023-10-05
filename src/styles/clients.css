@@ -105,7 +105,7 @@ select{
 }
  
 .client-breed-user-name{
-    background-image: url("../assets/dogpawngrey.png");
+    /*background-image: url("../assets/dogpawngrey.png");
     background-size: 25% 25%;
     background-repeat: no-repeat;
     background-position: bottom right;
@@ -114,21 +114,32 @@ select{
     color: #c4c4c4;
     font-size: small;
     border-top:2px outset #ffffff;
-    font-family: verdana;
+    font-family: verdana;*/
+    cursor: pointer;
+    width: 100%;
+    border-top:2px outset #ffffff;
    
 }
 
+.client-logo-pawn{
+    width:50%;
+    padding: 20%;
+    height: auto;
+}
+
 .client-link-route{
-    background-image: url("../assets/dogpawngrey.png");
+    /*background-image: url("../assets/dogpawngrey.png");
     background-size: 25% 25%;
     background-repeat: no-repeat;
     background-position: bottom right;
-    cursor: pointer;
     overflow-wrap: break-word;
     color: #c4c4c4;
     font-size: small;
     border-top:2px outset #ffffff;
-    font-family: verdana;
+    font-family: verdana;*/
+    width: 100%;
+    border-top:2px outset #ffffff;
+    cursor: pointer;
    
 }
 
