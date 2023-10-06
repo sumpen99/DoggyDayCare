@@ -48,8 +48,10 @@ export const InfoPageSheet = ({client,closeSheet}) => {
 
   const ClientInfoBody = ({client,action,addBackButton}) => {
     return (<div className="client-info-body" >
-    {addBackButton && <BackButton icon= {String.fromCharCode(0x24E7)} label={client.name} onCloseAction={action}/>}
-    {!addBackButton && <PageHeader label={client.name}/>}
+    {addBackButton ? 
+      <BackButton icon= {String.fromCharCode(0x24E7)} label={client.name} onCloseAction={action}/> :
+      <PageHeader label={client.name}/>
+    }
     <div className="client-top-header">
       <div className="client-image-container"> <AsyncImage src={client.img}></AsyncImage> </div>
       <div className="client-label"> <label>ABOUT ME!</label> </div>
