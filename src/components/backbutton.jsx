@@ -1,5 +1,5 @@
 import "../styles/backbutton.css"
-export const BackButton = ({icon,title,label,onCloseAction}) => {
+export const BackButton = ({icon,label,onCloseAction}) => {
     return (
           <div className="backbutton-body">
               <div className="backbutton-icon">
@@ -13,4 +13,15 @@ export const BackButton = ({icon,title,label,onCloseAction}) => {
          </div>
       
     );
+};
+
+export const PageHeader = ({label}) => {
+  return (
+        <div className="backbutton-body">
+            <div className="backbutton-label">
+              <h2>{label}</h2>
+            </div>
+       </div>
+    
+  );
 };

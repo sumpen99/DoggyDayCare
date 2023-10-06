@@ -2,7 +2,7 @@ import { CoorTransition } from "../components/transition";
 import {useLocation} from 'react-router-dom';
 import '../styles/info.css';
 import AsyncImage from "../helper/asyncimage"
-import { BackButton } from '../components/backbutton';
+import { BackButton,PageHeader } from '../components/backbutton';
 import { routeTransitionSpringFromBottom } from "../helper/transitiontypes";
 import { useNavigate } from "react-router-dom";
 import logo_pawn from "../assets/dogpawn.png";
@@ -20,7 +20,7 @@ export const InfoPageRoute = () => {
 
   const body = () =>{
     return(
-      <ClientInfoBody client={client} action={handleNavigateBack}/>
+      <ClientInfoBody client={client} action={handleNavigateBack} addBackButton={false}/>
     );
   }
 
@@ -36,7 +36,7 @@ export const InfoPageRoute = () => {
 export const InfoPageSheet = ({client,closeSheet}) => {
   const body = () =>{
     return(
-      <ClientInfoBody client={client} action={closeSheet}/>
+      <ClientInfoBody client={client} action={closeSheet} addBackButton={true}/>
     );
   }
 
@@ -46,9 +46,10 @@ export const InfoPageSheet = ({client,closeSheet}) => {
   };
   
 
-  const ClientInfoBody = ({client,action}) => {
+  const ClientInfoBody = ({client,action,addBackButton}) => {
     return (<div className="client-info-body" >
-    <BackButton icon= {String.fromCharCode(0x24E7)} title="" label={client.name} onCloseAction={action}/>
+    {addBackButton && <BackButton icon= {String.fromCharCode(0x24E7)} label={client.name} onCloseAction={action}/>}
+    {!addBackButton && <PageHeader label={client.name}/>}
     <div className="client-top-header">
       <div className="client-image-container"> <AsyncImage src={client.img}></AsyncImage> </div>
       <div className="client-label"> <label>ABOUT ME!</label> </div>

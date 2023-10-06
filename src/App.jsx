@@ -87,7 +87,7 @@ const BaseCardApp = () =>{
 }
 
 function App() {
-  const [clientCard, setClientCard] = useState(CLIENT_CARD_OPTION.ROUTE);
+  const [clientCard, setClientCard] = useState(CLIENT_CARD_OPTION.SHEET);
   const [hiddenMenu,setHiddenMenu] = useState(false);
 
   return (

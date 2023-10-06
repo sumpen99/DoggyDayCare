@@ -3,7 +3,7 @@ import "../styles/radioswitch.css";
 import { AppContext } from "./AppContext";
 import { CLIENT_CARD_OPTION } from "./AppContext";
 
-const labelText = `Mode`
+const labelText = `Please select preffered style to view additional information of clients.`;
 
 export const RadioSwitch = () =>{
     const context = useContext(AppContext);
@@ -29,14 +29,14 @@ export const RadioSwitch = () =>{
     return(
         <div className="radio-container">
             <div>
-                <span style={{fontWeight:500}}>{labelText}</span>
+                <div className="radio-label"><span className="radio-label" style={{fontWeight:500}}>{labelText}</span></div>
                 <label>
                     <input type="radio" id="sheet" name="radio" checked={sheetIsChecked} onChange={handleSelectionChanged}/>
                     <span >Sheet</span>
                 </label>
                 <label>
                     <input type="radio" id="route" name="radio" checked={!sheetIsChecked} onChange={handleSelectionChanged}/>
-                    <span>Route</span>
+                    <span>Page</span>
                 </label>
             </div>
         </div>
